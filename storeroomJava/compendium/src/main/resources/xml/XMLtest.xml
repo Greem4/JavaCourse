@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<root>
+    <persons>
+        <person attr1="1232" attr="123123">
+            <firstName>greem</firstName>
+            <lastName>Djou</lastName>
+            <birthDate>11.05.1982</birthDate>
+            <phones>
+                <phone type="mobile">1</phone>
+                <phone type="office">2</phone>
+                <phone type="home">3</phone>
+            </phones>
+        </person>
+        <person>
+            <firstName>greem</firstName>
+            <lastName>Djou</lastName>
+        </person>
+        <person>
+            <firstName>greem</firstName>
+            <lastName>Djou</lastName>
+        </person>
+        <person>
+            <firstName>greem</firstName>
+            <lastName>Djou</lastName>
+        </person>
+
+    </persons>
+
+</root>
