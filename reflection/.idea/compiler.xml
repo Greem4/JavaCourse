@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ServiceLoader" />
+        <module name="PasswordGen02" />
+        <module name="passwordGen01" />
+        <module name="PasswordGen03" />
+        <module name="HelloService" />
+        <module name="PasswordGen04" />
+        <module name="PasswordGen05" />
+        <module name="PasswordGen06" />
+        <module name="GenericReflection" />
+        <module name="SimpleHello" />
+        <module name="SimpleHello2" />
+        <module name="javaBeanExample" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

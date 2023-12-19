@@ -27,7 +27,6 @@ public class TextFile6 {
             } finally {
                 br.close();
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
