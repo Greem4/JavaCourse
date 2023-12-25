@@ -1,4 +1,4 @@
-package edu.javacourse.thread;
+package edu.javacourse.threadone;
 
 public class MyThread extends Thread {
     @Override
