@@ -1,4 +1,4 @@
-package edu.javacourse.date;
+package edu.javacourse.date.dateone;
 
 import java.util.*;
 
@@ -12,8 +12,8 @@ public class Starter {
         Locale[] locales = Locale.getAvailableLocales();
         for (Locale loc : locales) {
             if (loc.getDisplayLanguage().equals("английский"))
-            System.out.println(loc.getDisplayLanguage() + ":" +
-                    loc.getDisplayCountry() + ":" + loc.getDisplayVariant());
+                System.out.println(loc.getDisplayLanguage() + ":" +
+                        loc.getDisplayCountry() + ":" + loc.getDisplayVariant());
         }
 
         Calendar c = Calendar.getInstance(TimeZone.getTimeZone("Europe/London"), new Locale("ru"));
