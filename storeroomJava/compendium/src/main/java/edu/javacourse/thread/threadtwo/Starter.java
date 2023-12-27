@@ -1,9 +1,8 @@
-package edu.javacourse.threadtwo;
+package edu.javacourse.thread.threadtwo;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.TimeUnit;
 
 public class Starter {
     public static void main(String[] args) throws InterruptedException {

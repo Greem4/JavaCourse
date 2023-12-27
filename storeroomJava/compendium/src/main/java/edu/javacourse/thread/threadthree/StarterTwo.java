@@ -1,4 +1,4 @@
-package edu.javacourse.threadthree;
+package edu.javacourse.thread.threadthree;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;

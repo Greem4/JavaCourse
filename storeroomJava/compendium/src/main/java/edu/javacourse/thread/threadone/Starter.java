@@ -1,4 +1,4 @@
-package edu.javacourse.threadone;
+package edu.javacourse.thread.threadone;
 
 public class Starter {
     public static void main(String[] args) {
