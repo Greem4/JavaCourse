@@ -1,4 +1,4 @@
-package edu.javacourse.inteface;
+package edu.javacourse.inteface.interface1;
 
 public interface MyInterface1 {
 

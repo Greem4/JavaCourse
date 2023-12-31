@@ -1,4 +1,4 @@
-package edu.javacourse.inteface;
+package edu.javacourse.inteface.interface1;
 
 public class MyClass1 implements MyInterface1, MyInterface2 {
     @Override

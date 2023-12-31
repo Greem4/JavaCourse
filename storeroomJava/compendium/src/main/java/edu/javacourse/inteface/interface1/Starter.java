@@ -1,7 +1,4 @@
-package edu.javacourse.inteface;
-
-import edu.javacourse.inteface.MyClass1;
-import edu.javacourse.inteface.MyClass2;
+package edu.javacourse.inteface.interface1;
 
 public class Starter {
     public static void main(String[] args) {

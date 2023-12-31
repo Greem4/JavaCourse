@@ -1,4 +1,4 @@
-package edu.javacourse.inteface;
+package edu.javacourse.inteface.interface1;
 
 public interface MyInterface2 {
     default void sayHi() {

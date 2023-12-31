@@ -1,4 +1,4 @@
-package edu.javacourse.interfaceone;
+package edu.javacourse.inteface.interface2;
 
 public interface MyInterface {
     void sayHello();
