@@ -9,6 +9,7 @@ public class Starter {
         ForkJoinPool poll = new ForkJoinPool(16);
         poll.invoke(new MyAction(MAX));
         System.out.println("FINISH");
+
     }
 }
 
