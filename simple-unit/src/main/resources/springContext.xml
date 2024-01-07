@@ -28,7 +28,7 @@
         <property name="driverClassName" value="org.postgresql.Driver"/>
         <property name="url" value="jdbc:postgresql://localhost:5432/simple-unit"/>
         <property name="username" value="greem"/>
-        <property name="password" value="414510"/>
+        <property name="password" value="4145"/>
     </bean>
 
     <bean name="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
