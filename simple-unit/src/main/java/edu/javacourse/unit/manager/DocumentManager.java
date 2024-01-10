@@ -42,7 +42,7 @@ public class DocumentManager
                     alfrescoSystem.setPermissions(alfrescoId);
                 }
 
-                saveDocument(fileName, companyId, alfrescoId, amazonId);
+//                saveDocument(fileName, companyId, alfrescoId, amazonId);
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new RuntimeException(e);

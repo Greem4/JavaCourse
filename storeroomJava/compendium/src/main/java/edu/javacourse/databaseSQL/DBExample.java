@@ -16,9 +16,9 @@ public class DBExample {
 
     private static void testSelect() {
         List<Contact> result = new ArrayList<>();
-        String url = "jdbc:postgresql://localhost:5432/javacourse";
+        String url = "jdbc:postgresql://172.17.0.2:5432/postgres";
         try {
-            Connection con = DriverManager.getConnection(url, "greem", "4145");
+            Connection con = DriverManager.getConnection(url, "postgres", "postgres");
             Statement stmt = null;
             ResultSet rs = null;
             try {
@@ -52,10 +52,10 @@ public class DBExample {
     }
 
     private static void testInsert(Contact contact) {
-        String url = "jdbc:postgresql://localhost:5432/javacourse";
+        String url = "jdbc:postgresql://172.17.0.2:5432/postgres";
 
         try {
-            Connection con = DriverManager.getConnection(url, "greem", "4145");
+            Connection con = DriverManager.getConnection(url, "postgres", "postgres");
 
             PreparedStatement stmt = null;
             try {
