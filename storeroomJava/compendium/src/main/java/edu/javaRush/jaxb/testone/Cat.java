@@ -1,4 +1,4 @@
-package javaRush.jaxb.testone;
+package edu.javaRush.jaxb.testone;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;

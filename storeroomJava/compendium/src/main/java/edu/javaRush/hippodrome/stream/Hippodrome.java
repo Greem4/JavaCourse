@@ -1,7 +1,9 @@
-package javaRush.hippodrome.old;
+package edu.javaRush.hippodrome.stream;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Hippodrome {
     public static Hippodrome game;
@@ -40,30 +42,40 @@ public class Hippodrome {
     }
 
     void move() {
-        for (Horse horse : horses) {
-            horse.move();
-        }
+//        for (javaRush.hippodrome.old.Horse horse : horses) {
+//            horse.move();
+//        }
+
+        horses.forEach(Horse::move);
+
     }
 
     void print() {
-        for (Horse horse : horses) {
-            horse.print();
-        }
-        for (int i = 1; i < 11; i++) {
-            System.out.println();
-        }
+//        for (javaRush.hippodrome.old.Horse horse : horses) {
+//            horse.print();
+//        }
+//        for (int i = 1; i < 11; i++) {
+//            System.out.println();
+//        }
+
+        horses.forEach(Horse::print);
+        IntStream.range(0, 10).forEach(i -> System.out.println());
     }
 
     public Horse getWinner() {
-        Horse winner = null;
-        double maxDistance = 0;
-        for (Horse horse : horses) {
-            if (horse.getDistance() > maxDistance) {
-                maxDistance = horse.getDistance();
-                winner = horse;
-            }
-        }
-        return winner;
+//        javaRush.hippodrome.old.Horse winner = null;
+//        double maxDistance = 0;
+//        for (javaRush.hippodrome.old.Horse horse : horses) {
+//            if (horse.getDistance() > maxDistance) {
+//                maxDistance = horse.getDistance();
+//                winner = horse;
+//            }
+//        }
+//        return winner;
+
+        return horses.stream()
+                .max(Comparator.comparing(Horse::getDistance))
+                .orElse(null);
     }
 
     public void printWinner() {

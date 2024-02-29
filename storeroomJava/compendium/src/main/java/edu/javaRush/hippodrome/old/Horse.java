@@ -1,4 +1,4 @@
-package javaRush.hippodrome.old;
+package edu.javaRush.hippodrome.old;
 
 public class Horse {
     private String name;

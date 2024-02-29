@@ -1,4 +1,4 @@
-package javaRush.hippodrome.stream;
+package edu.javaRush.hippodrome.stream;
 
 public class Horse {
     private String name;
