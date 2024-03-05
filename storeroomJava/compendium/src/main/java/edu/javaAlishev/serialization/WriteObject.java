@@ -8,11 +8,8 @@ public class WriteObject {
     public static void main(String[] args) {
         Person[] people = {new Person(1, "Bob"), new Person(2, "Make"), new Person(3, "Tom")};
 
-        try (FileOutputStream fos = new FileOutputStream("people.bin");
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("people.bin"))) {
             oos.writeObject(people);
-
         } catch (IOException e) {
             e.printStackTrace();
         }

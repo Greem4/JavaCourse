@@ -3,7 +3,7 @@ package edu.javaAlishev.serialization;
 import java.io.Serializable;
 
 public class Person implements Serializable {
-    private int id;
+    private  int id;
     private String name;
 
     public Person(int id, String name) {
