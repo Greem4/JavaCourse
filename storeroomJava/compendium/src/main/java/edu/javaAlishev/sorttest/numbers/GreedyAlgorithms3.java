@@ -1,9 +1,9 @@
-package edu.javaAlishev.sorttest;
+package edu.javaAlishev.sorttest.numbers;
 
 import java.util.Arrays;
 import java.util.Collections;
 
-public class SortV3 {
+public class GreedyAlgorithms3 {
     public static void main(String[] args) {
         int[] digits = {3, 1, 7, 9, 9, 5};
         System.out.println(maxNumberFromDigits(digits));

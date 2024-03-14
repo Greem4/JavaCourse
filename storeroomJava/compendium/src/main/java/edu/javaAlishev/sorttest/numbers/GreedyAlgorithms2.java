@@ -1,9 +1,9 @@
-package edu.javaAlishev.sorttest;
+package edu.javaAlishev.sorttest.numbers;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class SortV1 {
+public class GreedyAlgorithms2 {
     public static void main(String[] args) {
 //        Integer[] numbers = {3, 30, 34, 5, 4, 6, 7};
         Integer[] numbers = {3, 1, 7, 9, 9, 5};
