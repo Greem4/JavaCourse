@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Test {
     /**
-    Принято обьявлять ArrayList по интерфейсу List, так как можно изменить
+    Принято объявлять ArrayList по интерфейсу List, так как можно изменить
      реализацию на ходу
      */
     public static void main(String[] args) {
