@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Test {
+public class ArrayListTest {
     /**
     Принято объявлять ArrayList по интерфейсу List, так как можно изменить
      реализацию на ходу
