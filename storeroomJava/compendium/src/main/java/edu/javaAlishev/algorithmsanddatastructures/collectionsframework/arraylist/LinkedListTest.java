@@ -1,4 +1,4 @@
-package edu.javaAlishev.algorithmsanddatastructures.arraylist;
+package edu.javaAlishev.algorithmsanddatastructures.collectionsframework.arraylist;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

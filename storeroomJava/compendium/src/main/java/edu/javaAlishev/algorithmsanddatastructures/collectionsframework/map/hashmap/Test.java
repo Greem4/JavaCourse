@@ -1,4 +1,4 @@
-package edu.javaAlishev.algorithmsanddatastructures.map;
+package edu.javaAlishev.algorithmsanddatastructures.collectionsframework.map.hashmap;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package edu.javaAlishev.algorithmsanddatastructures.linkedlist;
+package edu.javaAlishev.algorithmsanddatastructures.collectionsframework.linkedlist;
 
 import java.util.Arrays;
 
