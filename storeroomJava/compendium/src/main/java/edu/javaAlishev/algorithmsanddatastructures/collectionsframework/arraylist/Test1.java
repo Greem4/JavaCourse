@@ -3,5 +3,11 @@ package edu.javaAlishev.algorithmsanddatastructures.collectionsframework.arrayli
 public class Test1 {
     public static void main(String[] args) {
 
+
+
+
+
+
+
     }
 }
