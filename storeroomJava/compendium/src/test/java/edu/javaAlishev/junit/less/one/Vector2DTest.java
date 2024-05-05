@@ -1,6 +1,5 @@
-package edu.javaAlishev.junit;
+package edu.javaAlishev.junit.less.one;
 
-import edu.javaAlishev.junit.less.one.Vector2D;
 import org.junit.Assert;
 import org.junit.Test;
 
