@@ -1,0 +1,42 @@
+import org.apache.commons.lang3.StringUtils
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.apache.commons:commons-lang3:3.12.0'
+    }
+}
+
+apply from: 'script.gradle'
+
+allprojects {
+    group StringUtils.capitalize("greem4")
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+}
+
+repositories {
+    mavenCentral()
+}
+
+project(":database") {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+
+    }
+}
+
+wrapper {
+    gradleVersion "8.5"
+}

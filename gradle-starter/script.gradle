@@ -1,0 +1,53 @@
+import java.time.LocalDate
+
+ext {
+    javaVersion = 21
+    currentDate = LocalDate.now()
+}
+
+println ext.javaVersion
+println "---- All properties:"
+println project.properties
+println "---- System: "
+println System.getProperty("sys.example")
+
+
+
+task first {
+    doLast {
+        println "Task 1"
+    }
+}
+task second {
+    doLast {
+        println "Task 2"
+    }
+}
+task third {
+    doLast {
+        println "Task 3"
+    }
+}
+task fourth {
+    doLast {
+        println "Task 4"
+    }
+}
+
+//fourth.dependsOn second
+//second.dependsOn first
+//second.finalizedBy third
+
+fourth.dependsOn first
+fourth.dependsOn second
+fourth.dependsOn third
+
+first.mustRunAfter second
+
+gradle.taskGraph.whenReady { TaskExecutionGraph graph ->
+    println "-----Graph:"
+    graph.allTasks.each {
+        println "${it.name}"
+    }
+}
+

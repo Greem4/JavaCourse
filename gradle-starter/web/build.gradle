@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':service')
+    implementation project(':common:util')
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+war {
+    archiveFileName = 'greem4.war'
+}
+
+task deployTomcat(type: Copy) {
+    dependsOn war
+
+    from(war.archiveFile)
+    into("/home/greem/.sdkman/candidates/tomcat/current/webapps/")
+
+}
+deployTomcat.dependsOn(war)
+assemble.dependsOn deployTomcat

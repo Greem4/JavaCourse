@@ -1,0 +1,35 @@
+import com.greem4.task.ReleaseTask
+
+plugins {
+    id 'java-library'
+    id 'jacoco'
+    id 'custom-greem4'
+}
+
+//apply plugin: com.greem4.plugin.CustomPlugin
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api project(':database')
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+test.finalizedBy jacocoTestReport
+jacocoTestReport.dependsOn test
+
+ext {
+    release = false
+}
+
+task makeRelease(type: ReleaseTask) {
+    release = project.release
+    releaseFile = new File("$rootDir/script.gradle")
+}
