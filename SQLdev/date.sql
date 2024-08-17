@@ -34,7 +34,7 @@ CREATE TABLE employee
     id         SERIAL PRIMARY KEY,
     first_name varchar(128) NOT NULL,
     last_name  varchar(128) NOT NULL,
-    company_id INT REFERENCES company (id),
+    company_id INT REFERENCES company (id) ON DELETE CASCADE,
     salary     INT,
     UNIQUE (first_name, last_name)
 --     FOREIGN KEY (company_id) REFERENCES company(id)
@@ -68,21 +68,17 @@ SELECT first_name
 FROM employee
 WHERE company_id IS NOT NULL
 UNION
-SELECT
-    first_name
+SELECT first_name
 FROM employee
 WHERE salary IS NULL;
 
-SELECT
-    avg(emp.salary)
-FROM (SELECT
-          *
+SELECT avg(emp.salary)
+FROM (SELECT *
       FROM employee
       ORDER BY salary
       LIMIT 2) emp;
 
-SELECT
-    *
+SELECT *
 FROM employee
 ORDER BY salary
 LIMIT 2;
@@ -95,6 +91,27 @@ select *
 from employee
 where company_id IN (select company_id from company where date > '2000-01-01');
 
-SELECT * FROM (SELECT * FROM (VALUES (1, 'Google', '2001-01-01'),
-       (2, 'Apple', '2002-10-29'),
-       (3, 'Facebook', '1998-03-13')) t) y;
+SELECT *
+FROM (SELECT *
+      FROM (VALUES (1, 'Google', '2001-01-01'),
+                   (2, 'Apple', '2002-10-29'),
+                   (3, 'Facebook', '1998-03-13')) t) y;
+
+DELETE
+FROM employee
+WHERE salary is NULL;
+
+DELETE
+FROM employee
+WHERE salary = (SELECT max(salary) FROM employee);
+
+DELETE
+FROM company
+where id = 2;
+
+DELETE
+FROM employee
+WHERE company_id = 2;
+
+SELECT *
+from employee;
