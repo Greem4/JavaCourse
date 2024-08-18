@@ -20,12 +20,12 @@ CREATE TABLE company
     UNIQUE (name, date)
 );
 DROP TABLE company;
--- DROP TABLE public.company;
 
 INSERT INTO company(id, name, date)
 VALUES (1, 'Google', '2001-01-01'),
        (2, 'Apple', '2002-10-29'),
-       (3, 'Facebook', '1998-03-13');
+       (3, 'Facebook', '1998-03-13'),
+       (4, 'Amazon', '2005-06-17');
 
 DROP TABLE employee;
 
@@ -37,7 +37,6 @@ CREATE TABLE employee
     company_id INT REFERENCES company (id) ON DELETE CASCADE,
     salary     INT,
     UNIQUE (first_name, last_name)
---     FOREIGN KEY (company_id) REFERENCES company(id)
 );
 
 INSERT INTO employee (first_name, last_name, salary, company_id)
@@ -45,7 +44,42 @@ values ('Ivan', 'Sidorov', 500, 1),
        ('Ivan', 'Ivanov', 1000, 2),
        ('Arny', 'Paramonov', null, 2),
        ('Petr', 'Petrov', 2000, 3),
-       ('Sveta', 'Svetikova', 1500, NULL);
+       ('Sveta', 'Svetikova', 1500, NULL),
+       ('Ivan', 'Petrov', 2000, 2),
+       ('Serg', 'Sidarov', 2000, 3),
+       ('Ala', 'Brown', 1500, 1);
+select *
+from employee;
+
+CREATE TABLE contact
+(
+    id     BIGSERIAL PRIMARY KEY,
+    number VARCHAR(128) NOT NULL,
+    type   VARCHAR(128)
+);
+
+insert into contact (number, type)
+values ('234-56-78', 'домашний'),
+       ('987-65-43', 'рабочий'),
+       ('565-25-91', 'мобильный'),
+       ('332-55-67', NULL),
+       ('465-11-22', NULL);
+
+create table employee_contact
+(
+    employee_id BIGINT REFERENCES employee (id),
+    contact_id  BIGINT REFERENCES contact (id),
+    PRIMARY KEY (employee_id, contact_id)
+);
+
+insert into employee_contact (employee_id, contact_id)
+values (1, 1),
+       (1, 2),
+       (2, 2),
+       (2, 3),
+       (3, 4),
+       (4, 5);
+
 
 SELECT DISTINCT id,
                 first_name f_name,
@@ -119,10 +153,66 @@ from employee;
 UPDATE employee
 SET company_id = 1,
     salary     = 1700
-where id = 10 or id = 9
+where id = 10
+   or id = 9
 RETURNING id, first_name || ' ' || last_name fio;
 
+SELECT company.name,
+       employee.first_name || employee.last_name fio
+from employee,
+     company
+where employee.company_id = company.id;
+
+SELECT c.name,
+       employee.first_name || ' ' || employee.last_name fio,
+       ec.contact_id,
+       c2.number
+FROM employee
+         JOIN company c
+              ON employee.company_id = c.id
+         join employee_contact ec
+              on employee.id = ec.employee_id
+         join contact c2
+              on ec.contact_id = c2.id;
+
+SELECT *
+from employee
+         cross join company;
 
 
+-- INNER JOIN
+-- CROSS JOIN
+-- LEFT  JOIN
+-- FULL  JOIN
 
+SELECT c.name,
+       e.first_name
+from company c
+         LEFT JOIN employee e
+                   ON c.id = e.company_id;
+
+select c.name,
+       e.first_name
+from employee e
+         FULL JOIN company c
+                   on e.company_id = c.id;
+
+select company.name,
+       count(e.id)
+from company
+         LEFT JOIN employee e
+                   on company.id = e.company_id
+-- where company.name = 'Amazon'
+GROUP BY company.id, company.name
+HAVING count(e.id) > 0;
+
+select company.name,
+       e.last_name,
+       count(e.id) OVER (),
+       max(e.salary) OVER (),
+       avg(e.salary) OVER ()
+from company
+         left join employee e
+                   on company.id = e.company_id
+order by company.name;
 
