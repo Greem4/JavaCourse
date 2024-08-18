@@ -206,13 +206,47 @@ from company
 GROUP BY company.id, company.name
 HAVING count(e.id) > 0;
 
+
+CREATE VIEW  employee_view AS
 select company.name,
        e.last_name,
-       count(e.id) OVER (),
-       max(e.salary) OVER (),
-       avg(e.salary) OVER ()
+       e.salary,
+--        count(e.id) OVER (),
+       max(e.salary) OVER (PARTITION BY company.name),
+       min(e.salary) OVER (PARTITION BY company.name),
+       lag(e.salary) OVER (ORDER BY e.salary) - e.salary
+--        avg(e.salary) OVER (),
+--        row_number() over (partition by company.name),
+--        dense_rank() OVER (partition by company.name ORDER BY e.salary nulls first )
 from company
          left join employee e
                    on company.id = e.company_id
 order by company.name;
 
+select *
+from employee_view
+where name = 'Facebook';
+
+CREATE MATERIALIZED VIEW m_employee_view AS
+select company.name,
+       e.last_name,
+       e.salary,
+--        count(e.id) OVER (),
+       max(e.salary) OVER (PARTITION BY company.name),
+       min(e.salary) OVER (PARTITION BY company.name),
+       lag(e.salary) OVER (ORDER BY e.salary) - e.salary
+--        avg(e.salary) OVER (),
+--        row_number() over (partition by company.name),
+--        dense_rank() OVER (partition by company.name ORDER BY e.salary nulls first )
+from company
+         left join employee e
+                   on company.id = e.company_id
+order by company.name;
+
+select *
+from m_employee_view;
+
+select *
+from employee_view;
+
+refresh materialized view m_employee_view;
