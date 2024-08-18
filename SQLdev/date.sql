@@ -115,3 +115,14 @@ WHERE company_id = 2;
 
 SELECT *
 from employee;
+
+UPDATE employee
+SET company_id = 1,
+    salary     = 1700
+where id = 10 or id = 9
+RETURNING id, first_name || ' ' || last_name fio;
+
+
+
+
+
