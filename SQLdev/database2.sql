@@ -274,6 +274,6 @@ values (1, '2'),
        (7, '9');
 
 
-select id
+select *
 from ticket
 where id = 29;
