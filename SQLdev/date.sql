@@ -250,3 +250,18 @@ select *
 from employee_view;
 
 refresh materialized view m_employee_view;
+
+select * from employee;
+
+ALTER TABLE IF EXISTS employee
+ADD COLUMN gender INT ;
+
+ALTER TABLE employee
+ALTER COLUMN gender SET NOT NULL ;
+
+alter table employee
+drop column gender;
+
+update employee
+set gender = 1
+where id <= 5;
