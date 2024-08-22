@@ -4,11 +4,15 @@ import com.greem4.junit.dto.User;
 import org.junit.jupiter.api.*;
 
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTest {
 
+    private static final User IVAN = User.of(1, "Ivan", "123");
+    private static final User PETR = User.of(2, "Petr", "111");
     private UserService userService;
 
     @BeforeAll
@@ -33,12 +37,41 @@ public class UserServiceTest {
     @Test
     void userSizeIfUSerAdded() {
         System.out.println("Test 2: " + this);
-        userService.add(new User());
-        userService.add(new User());
+        userService.add(IVAN);
+        userService.add(PETR);
 
         var users = userService.getAll();
         assertEquals(2, users.size());
     }
+
+    @Test
+    void loginSuccessIfUserExists() {
+        userService.add(IVAN);
+
+        Optional<User> maybeUser = userService.login(IVAN.getUsername(), IVAN.getPassword());
+
+        assertTrue(maybeUser.isPresent());
+        maybeUser.ifPresent(user -> assertEquals(IVAN, user));
+    }
+
+    @Test
+    void logicFailIfPasswordIsNotCorrect() {
+        userService.add(IVAN);
+
+        var maybeUser = userService.login(IVAN.getUsername(), "111");
+
+        assertTrue(maybeUser.isEmpty());
+    }
+
+    @Test
+    void logicFailIfUserDoesNotExist() {
+        userService.add(IVAN);
+
+        var maybeUser = userService.login("111", IVAN.getPassword());
+
+        assertTrue(maybeUser.isEmpty());
+    }
+
 
     @AfterEach
     void deleteDataFromDatabase() {
