@@ -1,11 +1,14 @@
 package edu.greem4.http.util;
 
+import lombok.SneakyThrows;
+import lombok.experimental.UtilityClass;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Driver;
 
-public final class ConnectionManager {
+@UtilityClass
+public class ConnectionManager {
 
     private static final String URL_KEY = "db.url"; // Ключ для URL базы данных
     private static final String USER_KEY = "db.user"; // Ключ для имени пользователя
@@ -23,19 +26,13 @@ public final class ConnectionManager {
         }
     }
 
-
-    private ConnectionManager() {
-        // Приватный конструктор для предотвращения создания экземпляров
-    }
-
+    @SneakyThrows
     public static Connection get() {
-        try {
-            return DriverManager.getConnection(
-                    PropertiesUtil.get(URL_KEY),
-                    PropertiesUtil.get(USER_KEY),
-                    PropertiesUtil.get(PASSWORD_KEY));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        return DriverManager.getConnection(
+                PropertiesUtil.get(URL_KEY),
+                PropertiesUtil.get(USER_KEY),
+                PropertiesUtil.get(PASSWORD_KEY));
+
     }
 }
+

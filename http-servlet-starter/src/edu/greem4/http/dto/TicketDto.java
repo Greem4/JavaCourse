@@ -1,50 +1,14 @@
 package edu.greem4.http.dto;
 
-import java.util.Objects;
+import lombok.Builder;
+import lombok.Value;
 
+@Value
+@Builder
 public class TicketDto {
 
-    private final Long id;
-    private final Long flightId;
-    private final String seaNo;
+    Long id;
+    Long flightId;
+    String seaNo;
 
-    public TicketDto(Long id, Long flightId, String seaNo) {
-        this.id = id;
-        this.flightId = flightId;
-        this.seaNo = seaNo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public Long getFlightId() {
-        return flightId;
-    }
-
-    public String getSeaNo() {
-        return seaNo;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TicketDto ticketDto = (TicketDto) o;
-        return Objects.equals(id, ticketDto.id) && Objects.equals(flightId, ticketDto.flightId) && Objects.equals(seaNo, ticketDto.seaNo);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, flightId, seaNo);
-    }
-
-    @Override
-    public String toString() {
-        return "TicketDto{" +
-               "id=" + id +
-               ", flightId=" + flightId +
-               ", seaNo='" + seaNo + '\'' +
-               '}';
-    }
 }
