@@ -20,7 +20,7 @@ public class TicketService {
                 .map(ticket -> TicketDto.builder()
                         .id(ticket.getId())
                         .flightId(ticket.getFlightId())
-                        .seaNo(ticket.getSeatNo())
+                        .seatNo(ticket.getSeatNo())
                         .build()
                 )
                 .collect(toList());

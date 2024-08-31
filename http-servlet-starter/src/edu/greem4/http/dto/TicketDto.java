@@ -9,6 +9,6 @@ public class TicketDto {
 
     Long id;
     Long flightId;
-    String seaNo;
+    String seatNo;
 
 }
