@@ -7,9 +7,10 @@ import jakarta.servlet.annotation.WebInitParam;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@WebFilter(value = "/*", servletNames = {
-        "RegistrationServlet"
-},
+@WebFilter(value = "/*",
+//        servletNames = {
+//        "RegistrationServlet"
+//},
         initParams = {
                 @WebInitParam(name = "param1", value = "paramValue")
         },
