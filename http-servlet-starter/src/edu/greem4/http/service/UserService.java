@@ -1,12 +1,15 @@
-package edu.greem4.http.server;
+package edu.greem4.http.service;
 
 import edu.greem4.http.dao.UserDao;
 import edu.greem4.http.dto.CreateUserDto;
+import edu.greem4.http.dto.UserDto;
 import edu.greem4.http.exception.ValidationException;
 import edu.greem4.http.mapper.CreateUserMapper;
-import edu.greem4.http.service.ImageService;
+import edu.greem4.http.mapper.UserMapper;
 import edu.greem4.http.validator.CreateUserValidator;
 import lombok.SneakyThrows;
+
+import java.util.Optional;
 
 public class UserService {
 
@@ -15,7 +18,13 @@ public class UserService {
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final UserDao userDao = UserDao.getInstance();
     private final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
+    private final UserMapper userMapper = UserMapper.getInstance();
     private final ImageService imageService = ImageService.getInstance();
+
+    public Optional<UserDto> login(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password)
+                .map(userMapper::mapFrom);
+    }
 
     @SneakyThrows
     public Integer create(CreateUserDto userDto) {

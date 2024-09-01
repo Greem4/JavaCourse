@@ -2,7 +2,7 @@ package edu.greem4.http.servlet;
 
 import edu.greem4.http.dto.CreateUserDto;
 import edu.greem4.http.exception.ValidationException;
-import edu.greem4.http.server.UserService;
+import edu.greem4.http.service.UserService;
 import edu.greem4.http.util.JspHelper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
