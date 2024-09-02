@@ -3,6 +3,7 @@ package edu.greem4.http.servlet;
 import edu.greem4.http.dto.UserDto;
 import edu.greem4.http.service.UserService;
 import edu.greem4.http.util.JspHelper;
+import edu.greem4.http.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 
-@WebServlet("/login")
+@WebServlet(UrlPath.LOGIN)
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
