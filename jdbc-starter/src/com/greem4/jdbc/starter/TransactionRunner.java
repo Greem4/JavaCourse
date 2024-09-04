@@ -3,7 +3,6 @@ package com.greem4.jdbc.starter;
 import com.greem4.jdbc.starter.util.ConnectionManager;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -16,7 +15,7 @@ public class TransactionRunner {
         Connection connection = null;
         Statement statement = null;
         try {
-            connection = ConnectionManager.open();
+            connection = ConnectionManager.get();
             connection.setAutoCommit(false);
 
             statement = connection.createStatement();

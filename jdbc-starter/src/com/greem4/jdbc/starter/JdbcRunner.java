@@ -16,12 +16,15 @@ public class JdbcRunner {
 //        System.out.println(result);
 //        var result = getFlightsBetween(LocalDate.of(2020, 10, 1).atStartOfDay(), LocalDateTime.now());
 //        System.out.println(result);
-
-        checkMetaData();
+        try {
+            checkMetaData();
+        } finally {
+            ConnectionManager.closePoole();
+        }
     }
 
     private static void checkMetaData() throws SQLException {
-        try (var connection = ConnectionManager.open()) {
+        try (var connection = ConnectionManager.get()) {
             var metaData = connection.getMetaData();
             var catalogs = metaData.getCatalogs();
             while (catalogs.next()) {
@@ -30,7 +33,7 @@ public class JdbcRunner {
                 while (schemas.next()) {
                     var schema = schemas.getString("TABLE_SCHEM");
                     var tables = metaData.getTables(catalog, schema, "%", new String[]{"TABLE"});
-                    if(schema.equals("public")) {
+                    if (schema.equals("public")) {
                         while (tables.next()) {
                             System.out.println(tables.getString("TABLE_NAME"));
 
@@ -50,7 +53,7 @@ public class JdbcRunner {
                 WHERE departure_date BETWEEN ? AND ?
                 """;
         List<Long> result = new ArrayList<>();
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(sql)) {
             System.out.println(preparedStatement);
             preparedStatement.setTimestamp(1, Timestamp.valueOf(start));
@@ -75,7 +78,7 @@ public class JdbcRunner {
                 WHERE flight_id = ?
                 """;
         List<Long> result = new ArrayList<>();
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, flightId);
             var resultSet = preparedStatement.executeQuery();

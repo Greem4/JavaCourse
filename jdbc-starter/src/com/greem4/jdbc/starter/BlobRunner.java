@@ -21,7 +21,8 @@ public class BlobRunner {
                 FROM aircraft
                 WHERE id = ?
                 """;
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get
+                ();
              var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setInt(1, 1);
             var resultSet = preparedStatement.executeQuery();
@@ -38,7 +39,7 @@ public class BlobRunner {
                 SET image = ?
                 WHERE id = 1
                 """;
-        try (var connection = ConnectionManager.open();
+        try (var connection = ConnectionManager.get();
              var preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setBytes(1, Files.readAllBytes(Path.of("resources", "boing 777.jpg")));
             preparedStatement.executeUpdate();
