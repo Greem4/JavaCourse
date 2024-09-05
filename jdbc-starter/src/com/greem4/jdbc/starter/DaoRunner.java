@@ -1,16 +1,17 @@
 package com.greem4.jdbc.starter;
 
 import com.greem4.jdbc.starter.dao.TicketDao;
+import com.greem4.jdbc.starter.dto.TicketFilter;
 import com.greem4.jdbc.starter.entity.Ticket;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class DaoRunner {
 
     public static void main(String[] args) {
-        var tickets = TicketDao.getInstance().findAll();
-        System.out.println();
+        final var ticketFilter = new TicketFilter(3, 0, "Евгений Кудрявцев", "A1");
+        var tickets = TicketDao.getInstance().findAll(ticketFilter);
+        System.out.println(tickets);
     }
 
     private static void updateTest() {
