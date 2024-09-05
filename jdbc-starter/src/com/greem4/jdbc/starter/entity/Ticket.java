@@ -1,0 +1,21 @@
+package com.greem4.jdbc.starter.entity;
+
+import lombok.*;
+
+import java.math.BigDecimal;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@EqualsAndHashCode
+public class Ticket {
+
+    private Long id;
+    private String passengerNo;
+    private String passengerName;
+    private Long flightId;
+    private String seatNo;
+    private BigDecimal cost;
+}
