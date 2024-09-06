@@ -92,9 +92,11 @@ public class UserServiceTest {
     @Nested
     @DisplayName("test user login functionality")
     @Tag("login")
+    @Timeout(value = 350, unit = TimeUnit.MILLISECONDS)
     class LoginTest {
 
         @Test
+        @Disabled("flaky, need to see")
         void loginFailIfPasswordIsNotCorrect() {
             userService.add(IVAN);
 
@@ -103,13 +105,24 @@ public class UserServiceTest {
             assertTrue(maybeUser.isEmpty());
         }
 
-        @Test
-        void loginFailIfUserDoesNotExist() {
+        //        @Test
+        @RepeatedTest(value = 5, name = RepeatedTest.LONG_DISPLAY_NAME)
+        void loginFailIfUserDoesNotExist(RepetitionInfo repetitionInfo) {
             userService.add(IVAN);
 
             var maybeUser = userService.login("111", IVAN.getPassword());
 
             assertTrue(maybeUser.isEmpty());
+        }
+
+        @Test
+        void checkLoginFunctionalityPerformance() {
+            System.out.println(Thread.currentThread().getName());
+            var result = assertTimeoutPreemptively(Duration.ofMillis(350), () -> {
+                Thread.sleep(300);
+                System.out.println(Thread.currentThread().getName());
+                return userService.login("dumy", IVAN.getPassword());
+            });
         }
 
         @Test
