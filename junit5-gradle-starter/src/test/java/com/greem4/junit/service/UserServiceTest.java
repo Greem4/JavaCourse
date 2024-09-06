@@ -4,9 +4,12 @@ import com.greem4.junit.dto.User;
 import com.greem4.junit.paramresolver.UserServiceParamResolver;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -128,9 +131,34 @@ public class UserServiceTest {
                     () -> assertThrows(IllegalArgumentException.class, () -> userService.login(null, "123")),
                     () -> assertThrows(IllegalArgumentException.class, () -> userService.login("Ivan", null))
             );
-
-
         }
 
+        @ParameterizedTest(name = "{arguments} test")
+//        @ArgumentsSource()
+//        @NullSource
+//        @EmptySource
+//        @NullAndEmptySource
+//        @ValueSource(strings = {
+//                "Ivan", "Petr"
+//        })
+//        @EnumSource()
+        @MethodSource("com.greem4.junit.service.UserServiceTest#getArgumentsForLoginTest")
+//        @CsvFileSource(resources = "/login-test-data.csv", delimiter = ',', numLinesToSkip = 1)
+        @DisplayName("login param test")
+        void loginParameterizedTest(String username, String password, Optional<User> user) {
+            userService.add(IVAN, PETR);
+
+            var maybeUser = userService.login(username, password);
+            assertThat(maybeUser).isEqualTo(user);
+        }
+    }
+
+    static Stream<Arguments> getArgumentsForLoginTest() {
+        return Stream.of(
+                Arguments.of("Ivan", "123", Optional.of(IVAN)),
+                Arguments.of("Petr", "111", Optional.of(PETR)),
+                Arguments.of("Petr", "dump", Optional.empty()),
+                Arguments.of("dump", "123", Optional.empty())
+        );
     }
 }
