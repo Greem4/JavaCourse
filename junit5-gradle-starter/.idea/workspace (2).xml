@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="75ddb210-1fd8-4933-b43e-8c691acd086a" name="Changes" comment=":white_check_mark: Add performance test and timeout annotations to UserServiceTest&#10;&#10;- Import `Duration` and `TimeUnit`.&#10;- Annotate `LoginTest` with a timeout of 350 milliseconds.&#10;- Disable the flaky `loginFailIfPasswordIsNotCorrect` test.&#10;- Add performance test `checkLoginFunctionalityPerformance` to validate login process within specified duration." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="junit5-gradle-starter" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+    <option name="showPreview" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2l0KXXTjRoPKwIxQ0lYBrXSeLe4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.TestLauncher.executor": "Run",
+    "Gradle.LoginTest.checkLoginFunctionalityPerformance.executor": "Run",
+    "Gradle.LoginTest.executor": "Run",
+    "Gradle.LoginTest.loginFailIfUserDoesNotExist.executor": "Run",
+    "Gradle.LoginTest.loginParameterizedTest.executor": "Run",
+    "Gradle.LoginTest.throwExceptionIfUserNameOrPasswordIsNull.executor": "Run",
+    "Gradle.MainTest.main.executor": "Run",
+    "Gradle.UserServiceTest.executor": "Run",
+    "Gradle.UserServiceTest.loginSuccessIfUserExists.executor": "Run",
+    "Gradle.UserServiceTest.test.executor": "Run",
+    "Gradle.UserServiceTest.throwExceptionIfUserNameOrPasswordIsNull.executor": "Run",
+    "Gradle.UserServiceTest.userSizeIfUSerAdded.executor": "Run",
+    "Gradle.UserServiceTest.usersConvertedToMapById.executor": "Run",
+    "Gradle.UserServiceTest.usersEmptyIfUserAdded.executor": "Run",
+    "Gradle.UserServiceTest6.executor": "Run",
+    "Gradle.junit5-gradle-starter [:Main.main()].executor": "Run",
+    "Gradle.junit5-gradle-starter [:TestLauncher.main()].executor": "Run",
+    "Gradle.junit5-gradle-starter [buildDependents].executor": "Run",
+    "Gradle.junit5-gradle-starter [build].executor": "Run",
+    "Gradle.junit5-gradle-starter [classes].executor": "Run",
+    "Gradle.junit5-gradle-starter [clean].executor": "Run",
+    "Gradle.junit5-gradle-starter [run].executor": "Run",
+    "Gradle.junit5-gradle-starter [testClasses].executor": "Run",
+    "Gradle.junit5-gradle-starter [test].executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
+    "JUnit.UserServiceTest.userSizeIfUSerAdded.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/greem/yaDisk/JavaCourse/junit5-gradle-starter/src/main/java/com/greem4",
+    "last_opened_file_path": "/home/greem/yaDisk/JavaCourse/firstweb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.46666667",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.greem4.junit.dto" />
+      <recent name="com.greem4.junit.service" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.greem4" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradlew build" />
+      <command value="gradlew run " />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.UserServiceTest">
+    <configuration name="LoginTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.greem4.junit.service.UserServiceTest$LoginTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LoginTest.checkLoginFunctionalityPerformance" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.greem4.junit.service.UserServiceTest$LoginTest.checkLoginFunctionalityPerformance&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LoginTest.loginFailIfUserDoesNotExist" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.greem4.junit.service.UserServiceTest$LoginTest.loginFailIfUserDoesNotExist&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="LoginTest.loginParameterizedTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.greem4.junit.service.UserServiceTest$LoginTest.loginParameterizedTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.greem4.junit.service.UserServiceTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.UserServiceTest" />
+        <item itemvalue="Gradle.LoginTest" />
+        <item itemvalue="Gradle.LoginTest.checkLoginFunctionalityPerformance" />
+        <item itemvalue="Gradle.LoginTest.loginFailIfUserDoesNotExist" />
+        <item itemvalue="Gradle.LoginTest.loginParameterizedTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="75ddb210-1fd8-4933-b43e-8c691acd086a" name="Changes" comment="" />
+      <created>1724311596166</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724311596166</updated>
+      <workItem from="1724311597164" duration="1235000" />
+      <workItem from="1724312848125" duration="5020000" />
+      <workItem from="1724321765937" duration="7584000" />
+      <workItem from="1724333927020" duration="19000" />
+      <workItem from="1724333961054" duration="2137000" />
+      <workItem from="1724336611316" duration="6249000" />
+      <workItem from="1724345674602" duration="4715000" />
+      <workItem from="1724350410712" duration="448000" />
+      <workItem from="1724494439941" duration="219000" />
+      <workItem from="1724513947654" duration="5222000" />
+      <workItem from="1725637717158" duration="10354000" />
+      <workItem from="1725654652797" duration="80000" />
+      <workItem from="1725655075421" duration="458000" />
+    </task>
+    <task id="LOCAL-00001" summary=":tada: init junit5-gradle-starter.&#10;add unitTest test">
+      <option name="closed" value="true" />
+      <created>1724320447008</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724320447008</updated>
+    </task>
+    <task id="LOCAL-00002" summary=":white_check_mark: implement UserService and add tests for it.">
+      <option name="closed" value="true" />
+      <created>1724327515592</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1724327515593</updated>
+    </task>
+    <task id="LOCAL-00003" summary=":white_check_mark: add TestLauncher">
+      <option name="closed" value="true" />
+      <created>1724339636808</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1724339636808</updated>
+    </task>
+    <task id="LOCAL-00004" summary=":white_check_mark: add login - logic Fail">
+      <option name="closed" value="true" />
+      <created>1724345618642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1724345618642</updated>
+    </task>
+    <task id="LOCAL-00005" summary=":white_check_mark: Add AssertJ library, refactor UserService to support batch adding users, and implement getAllConvertedById method.">
+      <option name="closed" value="true" />
+      <created>1724350831738</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1724350831738</updated>
+    </task>
+    <task id="LOCAL-00006" summary=":white_check_mark: Add null checks to UserService's login method and test its behavior">
+      <option name="closed" value="true" />
+      <created>1724521838854</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724521838854</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":white_check_mark: Add null checks to UserService's login method and test its behavior">
+      <option name="closed" value="true" />
+      <created>1724521856052</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1724521856052</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":white_check_mark: Refactor UserServiceTest to include login tests in a nested class and add tag filters in TestLauncher.">
+      <option name="closed" value="true" />
+      <created>1725645745435</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725645745435</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":white_check_mark: Implement `UserServiceParamResolver` to support parameter resolution for `UserService` in tests. Update `UserServiceTest` to extend the new resolver and improve parameter handling in test methods.">
+      <option name="closed" value="true" />
+      <created>1725649228581</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725649228581</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":white_check_mark: Add JUnit Jupiter parameters for login tests and include CSV data source&#10;&#10;- Implement parameterized tests in `UserServiceTest` to validate login functionality.&#10;- Introduce new test method `loginParameterizedTest` using method source.&#10;- Add CSV file `login-test-data.csv` for test data input. &#10;- Update `build.gradle` to include `junit-jupiter-params` dependency.">
+      <option name="closed" value="true" />
+      <created>1725653576226</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725653576226</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":white_check_mark: Add performance test and timeout annotations to UserServiceTest&#10;&#10;- Import `Duration` and `TimeUnit`.&#10;- Annotate `LoginTest` with a timeout of 350 milliseconds.&#10;- Disable the flaky `loginFailIfPasswordIsNotCorrect` test.&#10;- Add performance test `checkLoginFunctionalityPerformance` to validate login process within specified duration.">
+      <option name="closed" value="true" />
+      <created>1725655452466</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725655452466</updated>
+    </task>
+    <task id="LOCAL-00012" summary=":white_check_mark: Add performance test and timeout annotations to UserServiceTest&#10;&#10;- Import `Duration` and `TimeUnit`.&#10;- Annotate `LoginTest` with a timeout of 350 milliseconds.&#10;- Disable the flaky `loginFailIfPasswordIsNotCorrect` test.&#10;- Add performance test `checkLoginFunctionalityPerformance` to validate login process within specified duration.">
+      <option name="closed" value="true" />
+      <created>1725655496909</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725655496909</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=":tada: init junit5-gradle-starter.&#10;add unitTest test" />
+    <MESSAGE value=":white_check_mark: implement UserService and add tests for it." />
+    <MESSAGE value=":white_check_mark: add TestLauncher" />
+    <MESSAGE value=":white_check_mark: add login - logic Fail" />
+    <MESSAGE value=":white_check_mark: Add AssertJ library, refactor UserService to support batch adding users, and implement getAllConvertedById method." />
+    <MESSAGE value=":white_check_mark: Add null checks to UserService's login method and test its behavior" />
+    <MESSAGE value=":white_check_mark: Refactor UserServiceTest to include login tests in a nested class and add tag filters in TestLauncher." />
+    <MESSAGE value=":white_check_mark: Implement `UserServiceParamResolver` to support parameter resolution for `UserService` in tests. Update `UserServiceTest` to extend the new resolver and improve parameter handling in test methods." />
+    <MESSAGE value=":white_check_mark: Add JUnit Jupiter parameters for login tests and include CSV data source&#10;&#10;- Implement parameterized tests in `UserServiceTest` to validate login functionality.&#10;- Introduce new test method `loginParameterizedTest` using method source.&#10;- Add CSV file `login-test-data.csv` for test data input. &#10;- Update `build.gradle` to include `junit-jupiter-params` dependency." />
+    <MESSAGE value=":white_check_mark: Add performance test and timeout annotations to UserServiceTest&#10;&#10;- Import `Duration` and `TimeUnit`.&#10;- Annotate `LoginTest` with a timeout of 350 milliseconds.&#10;- Disable the flaky `loginFailIfPasswordIsNotCorrect` test.&#10;- Add performance test `checkLoginFunctionalityPerformance` to validate login process within specified duration." />
+    <option name="LAST_COMMIT_MESSAGE" value=":white_check_mark: Add performance test and timeout annotations to UserServiceTest&#10;&#10;- Import `Duration` and `TimeUnit`.&#10;- Annotate `LoginTest` with a timeout of 350 milliseconds.&#10;- Disable the flaky `loginFailIfPasswordIsNotCorrect` test.&#10;- Add performance test `checkLoginFunctionalityPerformance` to validate login process within specified duration." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/greem4/junit/service/UserServiceTest.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/greem4/junit/service/UserServiceTest.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
