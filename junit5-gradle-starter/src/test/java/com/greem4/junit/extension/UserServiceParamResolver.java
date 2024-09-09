@@ -1,4 +1,4 @@
-package com.greem4.junit.paramresolver;
+package com.greem4.junit.extension;
 
 import com.greem4.junit.service.UserService;
 import org.junit.jupiter.api.extension.ExtensionContext;
