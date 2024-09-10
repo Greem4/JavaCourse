@@ -1,5 +1,6 @@
 package com.greem4;
 
+import com.greem4.entity.Role;
 import com.greem4.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,6 +26,7 @@ public class HibernateRunner {
                     .lastName("Ivanov")
                     .birthday(LocalDate.of(2000, 1, 19))
                     .age(20)
+                    .role(Role.ADMIN)
                     .build();
 
             session.save(user);
