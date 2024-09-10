@@ -24,7 +24,7 @@ public class HibernateRunner {
             session.beginTransaction();
 
             User user = User.builder()
-                    .username("ivan1@gmail.com")
+                    .username("ivan11@gmail.com")
                     .firstname("Ivan")
                     .lastName("Ivanov")
                     .birthday(new Birthday(LocalDate.of(2000, 1, 19)))

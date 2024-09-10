@@ -1,9 +1,10 @@
 package com.greem4.converter;
 
 import com.greem4.entity.Birthday;
-import jakarta.persistence.AttributeConverter;
-import jakarta.persistence.Converter;
 
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.sql.Date;
 import java.util.Optional;
 

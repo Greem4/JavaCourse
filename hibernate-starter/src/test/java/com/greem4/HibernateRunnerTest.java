@@ -2,10 +2,10 @@ package com.greem4;
 
 
 import com.greem4.entity.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.Table;
 import org.junit.jupiter.api.Test;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
 import java.time.LocalDate;
