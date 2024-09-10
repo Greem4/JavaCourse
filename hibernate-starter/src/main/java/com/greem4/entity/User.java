@@ -1,12 +1,12 @@
 package com.greem4.entity;
 
+import com.greem4.converter.BirthdayConverter;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -20,9 +20,10 @@ public class User {
     private String username;
     private String firstname;
     private String lastName;
+
     @Column(name = "birth_date")
-    private LocalDate birthday;
-    private Integer age;
+    private Birthday birthday;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 

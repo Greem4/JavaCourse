@@ -19,11 +19,6 @@ class HibernateRunnerTest {
     @Test
     void checkReflectionApi() throws SQLException, IllegalAccessException {
         User user = User.builder()
-                .username("ivan@gmail.com")
-                .firstname("Ivan")
-                .lastName("Ivanov")
-                .birthday(LocalDate.of(2000, 1, 19))
-                .age(20)
                 .build();
 
         String sql = """
