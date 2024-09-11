@@ -1,46 +1,40 @@
 package com.greem4;
 
-import com.greem4.converter.BirthdayConverter;
-import com.greem4.entity.Birthday;
-import com.greem4.entity.Role;
 import com.greem4.entity.User;
-import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.greem4.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
+
 
 public class HibernateRunner {
 
     public static void main(String[] args) throws SQLException {
+        User user = User.builder()
+                .username("ivanov@mail.com")
+                .lastname("Ivanov")
+                .firstname("Ivan")
+                .build();
+        try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory()) {
+            try (Session session1 = sessionFactory.openSession()) {
+                session1.beginTransaction();
 
-        Configuration configuration = new Configuration();
-        configuration.addAttributeConverter(new BirthdayConverter());
-        configuration.registerTypeOverride(new JsonBinaryType());
-        configuration.configure();
+                session1.saveOrUpdate(user);
 
-        try (SessionFactory sessionFactory = configuration.buildSessionFactory();
-             Session session = sessionFactory.openSession()) {
-            session.beginTransaction();
+                session1.getTransaction().commit();
+            }
 
-            User user = User.builder()
-                    .username("ivan@gmail.com")
-                    .firstname("Ivan")
-                    .lastname("Ivanov")
-                    .info("""
-                            {
-                                "name": "Ivan",
-                                "id": 25
-                            }
-                            """)
-                    .birthDate(new Birthday(LocalDate.of(2000, 1, 19)))
-                    .role(Role.ADMIN)
-                    .build();
-            session.save(user);
+            try (Session session2 = sessionFactory.openSession()) {
+                session2.beginTransaction();
 
-            session.getTransaction().commit();
+                user.setFirstname("Sveta");
+//                session2.delete(user);
+//                session2.refresh(user);
+                session2.merge(user);
+
+                session2.getTransaction().commit();
+            }
         }
     }
 }

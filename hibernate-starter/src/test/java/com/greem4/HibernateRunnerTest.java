@@ -2,19 +2,40 @@ package com.greem4;
 
 
 import com.greem4.entity.User;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.*;
 
 class HibernateRunnerTest {
+
+    @SneakyThrows
+    @Test
+    void checkGetReflectionApi() {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.getString("username");
+        resultSet.getString("lastname");
+        resultSet.getString("username");
+
+        Class<User> clazz = User.class;
+        Constructor<User> constructor = clazz.getConstructor();
+        User user = constructor.newInstance();
+        Field usernameField = clazz.getDeclaredField("username");
+        usernameField.setAccessible(true);
+        usernameField.set(user, resultSet.getString("username"));
+    }
+
 
     @Test
     void checkReflectionApi() throws SQLException, IllegalAccessException {
