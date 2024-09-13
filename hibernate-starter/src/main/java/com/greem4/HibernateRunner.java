@@ -15,7 +15,7 @@ public class HibernateRunner {
 
     public static void main(String[] args) throws SQLException {
         User user = User.builder()
-                .username("petr2@mail.com")
+                .username("petr1@mail.com")
                 .personalInfo(PersonalInfo.builder()
                         .lastname("Petrov")
                         .firstname("Petr")
