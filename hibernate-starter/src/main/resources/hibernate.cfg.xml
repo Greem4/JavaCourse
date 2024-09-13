@@ -14,6 +14,7 @@
 
 
       <mapping class="com.greem4.entity.User"/>
+      <mapping class="com.greem4.entity.Company"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
