@@ -1,5 +1,6 @@
 package com.greem4;
 
+import com.greem4.entity.Birthday;
 import com.greem4.entity.PersonalInfo;
 import com.greem4.entity.User;
 import com.greem4.util.HibernateUtil;
@@ -8,6 +9,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 @Slf4j
@@ -19,6 +21,7 @@ public class HibernateRunner {
                 .personalInfo(PersonalInfo.builder()
                         .lastname("Petrov")
                         .firstname("Petr")
+                        .birthDate(new Birthday(LocalDate.of(2000, 1, 2)))
                         .build())
                 .build();
         log.info("User entity is in transient state, object: {}", user);
@@ -34,6 +37,16 @@ public class HibernateRunner {
                 session1.getTransaction().commit();
             }
             log.warn("User is im detached state: {}, session is closed {}", user, session1);
+            try (Session session = sessionFactory.openSession()) {
+                PersonalInfo key = PersonalInfo.builder()
+                        .lastname("Petrov")
+                        .firstname("Petr")
+                        .birthDate(new Birthday(LocalDate.of(2000, 1, 2)))
+                        .build();
+
+                User user2 = session.get(User.class, key);
+                System.out.println();
+            }
         }catch (Exception exception) {
             log.error(exception.getMessage(), exception);
             throw exception;

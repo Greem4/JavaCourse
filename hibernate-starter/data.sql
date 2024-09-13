@@ -51,3 +51,14 @@ create table all_sequence
     pk_value BIGINT not null
 );
 
+CREATE TABLE users
+(
+    firstname VARCHAR(128) ,
+    lastname VARCHAR(128) ,
+    birth_date DATE ,
+    username VARCHAR(128) UNIQUE ,
+    role VARCHAR(32),
+    info jsonb,
+    primary key (firstname, lastname, birth_date)
+
+);
