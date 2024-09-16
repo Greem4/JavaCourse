@@ -2,6 +2,7 @@ package com.greem4;
 
 
 import com.greem4.entity.Company;
+import com.greem4.entity.Profile;
 import com.greem4.entity.User;
 import com.greem4.util.HibernateUtil;
 import lombok.Cleanup;
@@ -18,11 +19,35 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
 
 import static java.util.stream.Collectors.*;
 
 class HibernateRunnerTest {
+
+    @Test
+    void checkOneToOne() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var user = session.get(User.class, 10L);
+            System.out.println();
+
+//            var user = User.builder()
+//                    .username("test2@gmail.com")
+//                    .build();
+//            var profile = Profile.builder()
+//                    .language("ru")
+//                    .street("Kolasa 18")
+//                    .build();
+//
+//            session.save(user);
+//            profile.setUser(user);
+//            session.save(profile);
+
+            session.getTransaction().commit();
+        }
+    }
 
     @Test
     void checkOrhanRemoval() {

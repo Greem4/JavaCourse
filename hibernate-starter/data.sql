@@ -39,8 +39,8 @@ CREATE TABLE users
 
 );
 
-CREATE SEQUENCE users_id_seq
-OWNED BY users.id;
+-- CREATE SEQUENCE users_id_seq
+-- OWNED BY users.id;
 
 DROP TABLE users;
 drop sequence users_id_seq;
@@ -82,5 +82,11 @@ CREATE TABLE users
     role VARCHAR(32),
     info jsonb,
     company_id INT REFERENCES company (id)
+);
 
+CREATE TABLE profile
+(
+    user_id BIGINT PRIMARY KEY REFERENCES  users (id) ,
+    street VARCHAR(128) ,
+    language CHAR(2)
 );
