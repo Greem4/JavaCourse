@@ -90,3 +90,13 @@ CREATE TABLE profile
     street VARCHAR(128) ,
     language CHAR(2)
 );
+
+DROP TABLE profile;
+
+CREATE TABLE profile
+(
+    id BIGSERIAL PRIMARY KEY ,
+    user_id BIGINT NOT NULL UNIQUE REFERENCES  users (id) ,
+    street VARCHAR(128) ,
+    language CHAR(2)
+);
