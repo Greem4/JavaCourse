@@ -6,8 +6,6 @@ import com.greem4.entity.User;
 import com.greem4.util.HibernateUtil;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -23,6 +21,38 @@ import java.util.Optional;
 import static java.util.stream.Collectors.*;
 
 class HibernateRunnerTest {
+
+    @Test
+    void deleteCompany() {
+        @Cleanup var sessionFactory = HibernateUtil.buildSessionFactory();
+        @Cleanup var session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        var user = session.get(User.class, 1L);
+        session.delete(user);
+
+        session.getTransaction().commit();
+    }
+
+    @Test
+    void addUserToNewCompany() {
+        @Cleanup var sessionFactory = HibernateUtil.buildSessionFactory();
+        @Cleanup var session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        var company = Company.builder()
+                .name("Facebook")
+                .build();
+
+        var user = User.builder()
+                .username("sveta@gmail.com")
+                .build();
+        company.addUser(user);
+
+        session.save(company);
+
+        session.getTransaction().commit();
+    }
 
     @Test
     void oneToMany() {
@@ -85,13 +115,5 @@ class HibernateRunnerTest {
                 .collect(joining(", "));
 
         System.out.println(sql.formatted(tableName, columnNames, columnValues));
-
-//        Connection connection = null;
-//        PreparedStatement preparedStatement = connection.prepareStatement(sql.formatted(tableName, columnNames, columnValues));
-//        for (Field declaredField : declaredFields) {
-//            declaredField.setAccessible(true);
-//            preparedStatement.setObject(1, declaredField.get(user));
-//        }
     }
-
 }
