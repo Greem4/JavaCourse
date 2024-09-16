@@ -1,6 +1,7 @@
 package com.greem4;
 
 
+import com.greem4.entity.Chat;
 import com.greem4.entity.Company;
 import com.greem4.entity.Profile;
 import com.greem4.entity.User;
@@ -23,6 +24,26 @@ import java.util.Optional;
 import static java.util.stream.Collectors.*;
 
 class HibernateRunnerTest {
+
+    @Test
+    void checkManyToMany() {
+        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+            var user = session.get(User.class, 13L);
+            user.getChats().clear();
+
+//            var chat = Chat.builder()
+//                    .name("dmdev")
+//                    .build();
+//            user.addChat(chat);
+//
+//            session.save(chat);
+
+            session.getTransaction().commit();
+        }
+    }
 
     @Test
     void checkOneToOne() {
