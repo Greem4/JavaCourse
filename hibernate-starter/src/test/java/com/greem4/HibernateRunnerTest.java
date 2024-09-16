@@ -1,8 +1,13 @@
 package com.greem4;
 
 
+import com.greem4.entity.Company;
 import com.greem4.entity.User;
+import com.greem4.util.HibernateUtil;
+import lombok.Cleanup;
 import lombok.SneakyThrows;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -19,6 +24,18 @@ import static java.util.stream.Collectors.*;
 
 class HibernateRunnerTest {
 
+    @Test
+    void oneToMany() {
+        @Cleanup var sessionFactory = HibernateUtil.buildSessionFactory();
+        @Cleanup var session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        var company = session.get(Company.class, 1);
+        System.out.println("");
+
+        session.getTransaction().commit();
+    }
+
     @SneakyThrows
     @Test
     void checkGetReflectionApi() {
@@ -29,6 +46,7 @@ class HibernateRunnerTest {
         resultSet.getString("username");
 
         Class<User> clazz = User.class;
+
         Constructor<User> constructor = clazz.getConstructor();
         User user = constructor.newInstance();
         Field usernameField = clazz.getDeclaredField("username");

@@ -1,18 +1,16 @@
 package com.greem4.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "users")
+@EqualsAndHashCode(exclude = "users")
 @Builder
 @Entity
 public class Company {
@@ -22,4 +20,7 @@ public class Company {
     private Integer id;
 
     private String name;
+
+    @OneToMany(mappedBy = "company")
+    private Set<User> users;
 }
