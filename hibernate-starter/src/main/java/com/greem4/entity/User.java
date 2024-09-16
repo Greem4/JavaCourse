@@ -11,12 +11,12 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "username")
 @ToString(exclude = "company")
 @Builder
 @Entity
 @Table(name = "users", schema = "public")
 @TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
-@Access(AccessType.FIELD)
 public class User {
 
     @Id
@@ -35,7 +35,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
-//    @JoinColumn(name = "company_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id")
     private Company company;
 }

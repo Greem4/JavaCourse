@@ -63,6 +63,9 @@ CREATE TABLE users
 
 );
 
+DROP TABLE company;
+DROP TABLE users;
+
 CREATE TABLE company
 (
     id SERIAL PRIMARY KEY ,
