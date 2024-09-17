@@ -2,6 +2,7 @@ package com.greem4;
 
 
 import com.greem4.entity.*;
+import com.greem4.util.HibernateTestUtil;
 import com.greem4.util.HibernateUtil;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
@@ -25,7 +26,7 @@ class HibernateRunnerTest {
 
     @Test
     void checkH2() {
-        try (var sessionFactory = HibernateUtil.buildSessionFactory();
+        try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
             session.beginTransaction();
 
