@@ -6,7 +6,6 @@ import com.greem4.entity.PersonalInfo;
 import com.greem4.entity.User;
 import com.greem4.util.HibernateUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
