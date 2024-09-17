@@ -113,3 +113,14 @@ CREATE TABLE chat
     id BIGSERIAL PRIMARY KEY ,
     name VARCHAR(64) NOT NULL UNIQUE
 );
+
+DROP TABLE users_chat;
+
+CREATE TABLE users_chat
+(
+    id BIGSERIAL PRIMARY KEY ,
+    user_id BIGINT REFERENCES users (id),
+    chat_id BIGINT REFERENCES chat (id),
+    created_at TIMESTAMP NOT NULL ,
+    created_by VARCHAR(128) NOT NULL
+);

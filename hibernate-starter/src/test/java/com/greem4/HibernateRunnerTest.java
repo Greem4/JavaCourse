@@ -1,10 +1,7 @@
 package com.greem4;
 
 
-import com.greem4.entity.Chat;
-import com.greem4.entity.Company;
-import com.greem4.entity.Profile;
-import com.greem4.entity.User;
+import com.greem4.entity.*;
 import com.greem4.util.HibernateUtil;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
@@ -18,6 +15,7 @@ import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -32,7 +30,17 @@ class HibernateRunnerTest {
             session.beginTransaction();
 
             var user = session.get(User.class, 13L);
-            user.getChats().clear();
+            var chat = session.get(Chat.class, 1L);
+
+            var userChat = UserChat.builder()
+                    .createdAt(Instant.now())
+                    .createdBy(user.getUsername())
+                    .build();
+            userChat.setUser(user);
+            userChat.setChat(chat);
+
+            session.save(userChat);
+//            user.getChats().clear();
 
 //            var chat = Chat.builder()
 //                    .name("dmdev")
