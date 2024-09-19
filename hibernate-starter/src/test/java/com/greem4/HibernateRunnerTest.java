@@ -24,6 +24,28 @@ import static java.util.stream.Collectors.*;
 class HibernateRunnerTest {
 
     @Test
+    void checkHql() {
+        try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
+             var session = sessionFactory.openSession()) {
+            session.beginTransaction();
+
+//          HQL  /  JPQL
+//            select u. * from users u where u.firstname = 'Ivan'
+            String name = "Ivan";
+            var result = session.createQuery(
+                    "select u from User u " +
+                    "join u.company c " +
+                    "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
+                    "order by u.personalInfo.lastname desc ", User.class)
+                    .setParameter("firstname", name)
+                    .setParameter("companyName", "Goggle")
+                    .list();
+
+            session.getTransaction().commit();
+        }
+    }
+
+    @Test
     void checkH2() {
         try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
              var session = sessionFactory.openSession()) {
@@ -81,23 +103,6 @@ class HibernateRunnerTest {
 
             var user = session.get(User.class, 13L);
             var chat = session.get(Chat.class, 1L);
-
-//            var userChat = UserChat.builder()
-//                    .createdAt(Instant.now())
-//                    .createdBy(user.getUsername())
-//                    .build();
-//            userChat.setUser(user);
-//            userChat.setChat(chat);
-
-//            session.save(userChat);
-//            user.getChats().clear();
-
-//            var chat = Chat.builder()
-//                    .name("dmdev")
-//                    .build();
-//            user.addChat(chat);
-//
-//            session.save(chat);
 
             session.getTransaction().commit();
         }
