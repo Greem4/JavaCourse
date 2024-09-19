@@ -6,7 +6,9 @@ import com.greem4.util.HibernateTestUtil;
 import com.greem4.util.HibernateUtil;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
+import org.hibernate.FlushMode;
 import org.hibernate.Hibernate;
+import org.hibernate.jpa.QueryHints;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -32,14 +34,17 @@ class HibernateRunnerTest {
 //          HQL  /  JPQL
 //            select u. * from users u where u.firstname = 'Ivan'
             String name = "Ivan";
-            var result = session.createQuery(
-                    "select u from User u " +
-                    "join u.company c " +
-                    "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
-                    "order by u.personalInfo.lastname desc ", User.class)
+            var result = session.createNamedQuery("findUserByName",User.class)
                     .setParameter("firstname", name)
                     .setParameter("companyName", "Goggle")
+                    .setFlushMode(FlushMode.COMMIT)
+                    .setHint(QueryHints.HINT_FETCH_SIZE, "50")
                     .list();
+
+            var countRows = session.createQuery("update User u set u.role = 'ADMIN'")
+                    .executeUpdate();
+
+            session.createNativeQuery("select u. * from users u where u.firstname = 'Ivan'", User.class);
 
             session.getTransaction().commit();
         }

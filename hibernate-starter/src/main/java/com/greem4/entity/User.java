@@ -10,6 +10,10 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(name = "findUserByName", query = "select u from User u " +
+                                             "left join u.company c " +
+                                             "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
+                                             "order by u.personalInfo.lastname desc ")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
