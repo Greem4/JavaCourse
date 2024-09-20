@@ -1,6 +1,7 @@
 package com.greem4.dao;
 
 import com.greem4.dto.CompanyDto;
+import com.greem4.dto.PaymentFilter;
 import com.greem4.entity.Payment;
 import com.greem4.entity.User;
 import com.greem4.util.HibernateTestUtil;
@@ -112,7 +113,11 @@ public class UserDaoTest {
         @Cleanup Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        Double averagePaymentAmount = userDao.findAveragePaymentAmountByFirstAndLastNames(session, "Bill", "Gates");
+        PaymentFilter filter = PaymentFilter.builder()
+                .lastName("Gates")
+                .firstName("Bill")
+                .build();
+        Double averagePaymentAmount = userDao.findAveragePaymentAmountByFirstAndLastNames(session, filter);
         assertThat(averagePaymentAmount).isEqualTo(300.0);
 
         session.getTransaction().commit();
