@@ -10,6 +10,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.greem4.util.StringUtils.SPACE;
+
 @NamedQuery(name = "findUserByName", query = "select u from User u " +
                                              "left join u.company c " +
                                              "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
@@ -19,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "username")
 @ToString(exclude = {"company", "profile", "userChats"})
+@Builder
 @Entity
 @Table(name = "users", schema = "public")
 @TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
@@ -41,20 +44,30 @@ public class User implements Comparable<User>, BaseEntity<Long> {
     private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
+    @JoinColumn(name = "company_id") // company_id
     private Company company;
 
-    @OneToOne(mappedBy = "user",
+    @OneToOne(
+            mappedBy = "user",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     private Profile profile;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<UserChat> userChats = new ArrayList<>();
+
+    @Builder.Default
+    @OneToMany(mappedBy = "receiver")
+    private List<Payment> payments = new ArrayList<>();
 
     @Override
     public int compareTo(User o) {
         return username.compareTo(o.username);
+    }
+
+    public String fullName() {
+        return getPersonalInfo().getFirstname() + SPACE + getPersonalInfo().getLastname();
     }
 }

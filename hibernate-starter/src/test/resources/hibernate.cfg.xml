@@ -17,8 +17,7 @@
       <mapping class="com.greem4.entity.Profile"/>
       <mapping class="com.greem4.entity.Chat"/>
       <mapping class="com.greem4.entity.UserChat"/>
-      <mapping class="com.greem4.entity.Programmer"/>
-      <mapping class="com.greem4.entity.Manager"/>
+      <mapping class="com.greem4.entity.Payment"/>
 
   </session-factory>
 </hibernate-configuration>

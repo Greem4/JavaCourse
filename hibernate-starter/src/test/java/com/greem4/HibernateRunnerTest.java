@@ -9,6 +9,7 @@ import lombok.SneakyThrows;
 import org.hibernate.FlushMode;
 import org.hibernate.Hibernate;
 import org.hibernate.jpa.QueryHints;
+import org.hibernate.query.NativeQuery;
 import org.junit.jupiter.api.Test;
 
 import javax.persistence.Column;
@@ -50,41 +51,6 @@ class HibernateRunnerTest {
         }
     }
 
-    @Test
-    void checkH2() {
-        try (var sessionFactory = HibernateTestUtil.buildSessionFactory();
-             var session = sessionFactory.openSession()) {
-            session.beginTransaction();
-
-            var google = Company.builder()
-                    .name("Google")
-                    .build();
-            session.save(google);
-
-            Programmer programmer = Programmer.builder()
-                    .username("ivan@gmaiol.com")
-                    .language(Language.JAVA)
-                    .company(google)
-                    .build();
-            session.save(programmer);
-
-            Manager manager = Manager.builder()
-                    .username("sveta@gmail.com")
-                    .projectName("Starter")
-                    .company(google)
-                    .build();
-            session.save(manager);
-            session.flush();
-
-            session.clear();
-
-            var programmer1 = session.get(Programmer.class, 1L);
-            var manager1 = session.get(User.class, 2L);
-            System.out.println();
-
-            session.getTransaction().commit();
-        }
-    }
 
     @Test
     void localeInfo() {
