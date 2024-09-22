@@ -47,7 +47,8 @@ public class UserDaoTest {
         assertThat(results).hasSize(5);
 
         List<String> fullNames = results.stream().map(User::fullName).collect(toList());
-        assertThat(fullNames).containsExactlyInAnyOrder("Bill Gates", "Steve Jobs", "Sergey Brin", "Tim Cook", "Diane Greene");
+        assertThat(fullNames).containsExactlyInAnyOrder(
+                "Bill Gates", "Steve Jobs", "Sergey Brin", "Tim Cook", "Diane Greene");
 
         session.getTransaction().commit();
     }
@@ -131,10 +132,12 @@ public class UserDaoTest {
         List<Tuple> results = userDao.findCompanyNamesWithAvgUserPaymentsOrderedByCompanyName(session);
         assertThat(results).hasSize(3);
 
-        List<String> orgNames = results.stream().map(it-> it.get(0, String.class)).collect(toList());
+        List<String> orgNames = results.stream().map(it-> it.get(0, String.class))
+                .collect(toList());
         assertThat(orgNames).contains("Apple", "Google", "Microsoft");
 
-        List<Double> orgAvgPayments = results.stream().map(it -> it.get(1, Double.class)).collect(toList());
+        List<Double> orgAvgPayments = results.stream().map(it -> it.get(1, Double.class))
+                .collect(toList());
         assertThat(orgAvgPayments).contains(410.0, 400.0, 300.0);
 
         session.getTransaction().commit();
@@ -148,10 +151,12 @@ public class UserDaoTest {
         List<Tuple> results = userDao.isItPossible(session);
         assertThat(results).hasSize(2);
 
-        List<String> names = results.stream().map(r -> r.get(0, User.class).fullName()).collect(toList());
+        List<String> names = results.stream().map(r -> r.get(0, User.class)
+                .fullName()).collect(toList());
         assertThat(names).contains("Sergey Brin", "Steve Jobs");
 
-        List<Double> averagePayments = results.stream().map(r -> r.get(1, Double.class)).collect(toList());
+        List<Double> averagePayments = results.stream().map(r -> r.get(1, Double.class))
+                .collect(toList());
         assertThat(averagePayments).contains(500.0, 450.0);
 
         session.getTransaction().commit();
