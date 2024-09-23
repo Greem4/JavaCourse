@@ -12,6 +12,7 @@ import javax.persistence.LockModeType;
 import javax.transaction.Transactional;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 
 @Slf4j
@@ -22,24 +23,22 @@ public class HibernateRunner {
 
         try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory()) {
             Session session = sessionFactory.openSession();
-            Session session1 = sessionFactory.openSession();
             TestDataImporter.importData(sessionFactory);
 
+//            session.setDefaultReadOnly(true);
             session.beginTransaction();
-            session1.beginTransaction();
 
-            session.createQuery("select p from Payment p", Payment.class)
-                    .setLockMode(LockModeType.PESSIMISTIC_FORCE_INCREMENT)
-                    .setHint("javax.persistence.lock.timeout", 5000)
-                    .list();
+            session.createNativeQuery("SET TRANSACTION READ ONLY ").executeUpdate();
 
-            var payment = session.find(Payment.class, 1L, LockModeType.PESSIMISTIC_FORCE_INCREMENT );
+//            var payments = session.createQuery("select p from Payment p", Payment.class)
+//                    .setLockMode(LockModeType.PESSIMISTIC_FORCE_INCREMENT)
+//                    .setHint("javax.persistence.lock.timeout", 5000)
+//                    .setReadOnly(true)
+//                    .list();
+
+            var payment = session.find(Payment.class, 1L);
             payment.setAmount(payment.getAmount() + 10);
 
-            var theSamePayment = session1.find(Payment.class, 1L);
-            theSamePayment.setAmount(theSamePayment.getAmount() + 20);
-
-            session1.getTransaction().commit();
             session.getTransaction().commit();
         }
     }
