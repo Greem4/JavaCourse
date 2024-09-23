@@ -2,11 +2,13 @@ package com.greem4;
 
 import com.greem4.entity.Payment;
 import com.greem4.util.HibernateUtil;
+import com.greem4.util.TestDataImporter;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.jdbc.Work;
 
+import javax.persistence.LockModeType;
 import javax.transaction.Transactional;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,20 +22,20 @@ public class HibernateRunner {
 
         try (SessionFactory sessionFactory = HibernateUtil.buildSessionFactory()) {
             Session session = sessionFactory.openSession();
-            session.doWork(connection -> {
-                System.out.println(connection.getTransactionIsolation());
-            });
-//            try {
-//                var transaction = session.beginTransaction();
-//
-//                var payment1 = session.find(Payment.class, 1L);
-//                var payment2 = session.find(Payment.class, 2L);
-//
-//                session.getTransaction().commit();
-//            }catch (Exception e) {
-//                session.getTransaction().rollback();
-//                throw e;
-//            }
+            Session session1 = sessionFactory.openSession();
+            TestDataImporter.importData(sessionFactory);
+
+            session.beginTransaction();
+            session1.beginTransaction();
+
+            var payment = session.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
+            payment.setAmount(payment.getAmount() + 10);
+
+            var theSamePayment = session1.find(Payment.class, 1L, LockModeType.OPTIMISTIC);
+            theSamePayment.setAmount(theSamePayment.getAmount() + 20);
+
+            session.getTransaction().commit();
+            session1.getTransaction().commit();
         }
     }
 }
