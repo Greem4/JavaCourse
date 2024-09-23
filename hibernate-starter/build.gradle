@@ -66,3 +66,4 @@ compileQuerydsl.dependsOn(clean)
 test {
     useJUnitPlatform()
 }
+
