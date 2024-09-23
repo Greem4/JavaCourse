@@ -11,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -101,10 +102,30 @@ public class UserDao {
 //                .setParameter("companyName", companyName)
 //                .list();
 
+//        var cb = session.getCriteriaBuilder();
+//
+//        var criteria = cb.createQuery(Payment.class);
+//        var payment = criteria.from(Payment.class);
+//        var user = payment.join("receiver");
+//        payment.fetch("receiver");
+//
+//        var company = user.join("company");
+//
+//        criteria.select(payment).where(
+//                        cb.equal(company.get("name"), companyName)
+//                )
+//                .orderBy(
+//                        cb.asc(user.get("personalInfo").get("firstname")),
+//                        cb.asc(payment.get("amount"))
+//                );
+//
+//        return session.createQuery(criteria)
+//                .list();
+
         return new JPAQuery<Payment>(session)
                 .select(payment)
                 .from(payment)
-                .join(payment.receiver, user)
+                .join(payment.receiver, user).fetchJoin()
                 .join(user.company, company)
                 .where(company.name.eq(companyName))
                 .orderBy(user.personalInfo.firstname.asc(), payment.amount.asc())
