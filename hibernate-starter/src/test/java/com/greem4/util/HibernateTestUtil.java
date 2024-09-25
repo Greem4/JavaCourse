@@ -15,7 +15,7 @@ public class HibernateTestUtil {
     }
 
     public static SessionFactory buildSessionFactory() {
-        Configuration configuration = HibernateUtil.buildConfigurations();
+        Configuration configuration = HibernateUtil.buildConfiguration();
         configuration.setProperty("hibernate.connection.url", postgres.getJdbcUrl());
         configuration.setProperty("hibernate.connection.username", postgres.getUsername());
         configuration.setProperty("hibernate.connection.password", postgres.getPassword());

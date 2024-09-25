@@ -1,6 +1,8 @@
 package com.greem4.entity;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import javax.persistence.*;
 
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @Entity
 //@OptimisticLocking(type = OptimisticLockType.ALL)
 //@DynamicUpdate
+@Audited
 public class Payment extends AuditableEntity<Long> {
 
     @Id
@@ -24,6 +27,7 @@ public class Payment extends AuditableEntity<Long> {
     @Column(nullable = false)
     private Integer amount;
 
+//    @NotAudited
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "receiver_id")
     private User receiver;

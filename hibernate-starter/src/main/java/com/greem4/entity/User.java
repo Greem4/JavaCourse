@@ -11,6 +11,8 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.FetchProfile;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -65,6 +67,7 @@ import static com.greem4.util.StringUtils.SPACE;
 @Entity
 @Table(name = "users", schema = "public")
 @TypeDef(name = "dmdev", typeClass = JsonBinaryType.class)
+@Audited
 public class User implements Comparable<User>, BaseEntity<Long> {
 
     @Id
@@ -96,11 +99,17 @@ public class User implements Comparable<User>, BaseEntity<Long> {
 //    @Fetch(FetchMode.JOIN)
     private Company company;
 
+    @NotAudited
     @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<UserChat> userChats = new ArrayList<>();
 
+    @NotAudited
     @Builder.Default
+//    @BatchSize(size = 3)
+//    1 + N -> 1 + 500 -> 1 + 500/3 -> 3
+//    1 + N -> 1 + 1 -> 2
+//    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "receiver")
     private List<Payment> payments = new ArrayList<>();
 
