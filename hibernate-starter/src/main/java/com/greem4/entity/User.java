@@ -1,18 +1,36 @@
 package com.greem4.entity;
 
-
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
-import lombok.*;
-import org.hibernate.annotations.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.FetchProfile;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.*;
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedSubgraph;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static com.greem4.util.StringUtils.SPACE;
 
@@ -25,7 +43,7 @@ import static com.greem4.util.StringUtils.SPACE;
         subgraphs = {
                 @NamedSubgraph(name = "chats", attributeNodes = @NamedAttributeNode("chat"))
         }
-        )
+)
 @FetchProfile(name = "withCompanyAndPayment", fetchOverrides = {
         @FetchProfile.FetchOverride(
                 entity = User.class, association = "company", mode = FetchMode.JOIN
@@ -37,7 +55,7 @@ import static com.greem4.util.StringUtils.SPACE;
 @NamedQuery(name = "findUserByName", query = "select u from User u " +
                                              "left join u.company c " +
                                              "where u.personalInfo.firstname = :firstname and c.name = :companyName " +
-                                             "order by u.personalInfo.lastname desc ")
+                                             "order by u.personalInfo.lastname desc")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -65,9 +83,6 @@ public class User implements Comparable<User>, BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id") // company_id
-    private Company company;
 
 //    @OneToOne(
 //            mappedBy = "user",
@@ -76,12 +91,16 @@ public class User implements Comparable<User>, BaseEntity<Long> {
 //    )
 //    private Profile profile;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "user")
-    private Set<UserChat> userChats = new HashSet<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id") // company_id
+//    @Fetch(FetchMode.JOIN)
+    private Company company;
 
     @Builder.Default
-//    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "user")
+    private List<UserChat> userChats = new ArrayList<>();
+
+    @Builder.Default
     @OneToMany(mappedBy = "receiver")
     private List<Payment> payments = new ArrayList<>();
 
