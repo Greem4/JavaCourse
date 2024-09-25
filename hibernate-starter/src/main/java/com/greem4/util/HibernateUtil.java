@@ -2,6 +2,7 @@ package com.greem4.util;
 
 import com.greem4.converter.BirthdayConverter;
 import com.greem4.entity.Audit;
+import com.greem4.entity.Revision;
 import com.greem4.entity.User;
 import com.greem4.interceptor.GlobalInterceptor;
 import com.greem4.listener.AuditTableListener;
@@ -42,6 +43,7 @@ public class HibernateUtil {
         configuration.setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy());
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Audit.class);
+        configuration.addAnnotatedClass(Revision.class);
         configuration.addAttributeConverter(new BirthdayConverter());
         configuration.registerTypeOverride(new JsonBinaryType());
         configuration.setInterceptor(new GlobalInterceptor());
