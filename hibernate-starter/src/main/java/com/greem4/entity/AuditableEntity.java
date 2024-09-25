@@ -1,6 +1,6 @@
 package com.greem4.entity;
 
-import com.greem4.listener.AuditListener;
+import com.greem4.listener.AuditDatesListener;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,7 @@ import java.time.Instant;
 @Getter
 @Setter
 @MappedSuperclass
-@EntityListeners(AuditListener.class)
+@EntityListeners(AuditDatesListener.class)
 public abstract class AuditableEntity<T extends Serializable> implements BaseEntity<T> {
 
     private Instant createdAt;
