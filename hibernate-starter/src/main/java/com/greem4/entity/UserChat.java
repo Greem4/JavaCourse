@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users_chat")
 @EntityListeners(UserChatListener.class)
-//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class UserChat extends AuditableEntity<Long> {
 
     @Id
