@@ -2,6 +2,8 @@ package com.greem4.entity;
 
 import com.greem4.listener.UserChatListener;
 import lombok.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 
@@ -13,6 +15,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users_chat")
 @EntityListeners(UserChatListener.class)
+//@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class UserChat extends AuditableEntity<Long> {
 
     @Id
