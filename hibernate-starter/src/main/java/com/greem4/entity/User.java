@@ -34,6 +34,13 @@ import java.util.List;
 import static com.greem4.util.StringUtils.SPACE;
 
 @NamedEntityGraph(
+        name = "WithCompany",
+        attributeNodes = {
+                @NamedAttributeNode("company")
+        }
+)
+
+@NamedEntityGraph(
         name = "WithCompanyAndChat",
         attributeNodes = {
                 @NamedAttributeNode("company"),

@@ -1,19 +1,13 @@
 package com.greem4.dao;
 
-import com.greem4.dto.CompanyDto;
 import com.greem4.dto.PaymentFilter;
 import com.greem4.entity.*;
 import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQuery;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 
-import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static com.greem4.entity.QCompany.company;
