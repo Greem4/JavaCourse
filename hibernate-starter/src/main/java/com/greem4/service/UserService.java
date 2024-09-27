@@ -7,12 +7,15 @@ import com.greem4.entity.User;
 import com.greem4.mapper.Mapper;
 import com.greem4.mapper.UserCreateMapper;
 import com.greem4.mapper.UserReadMapper;
+import com.greem4.validation.UpdateCheck;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.graph.GraphSemantic;
 
 import javax.transaction.Transactional;
+import javax.validation.*;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @RequiredArgsConstructor
 public class UserService {
@@ -24,6 +27,13 @@ public class UserService {
     @Transactional
     public Long create(UserCreateDto userDto) {
         // validation
+        var validatorFactory = Validation.buildDefaultValidatorFactory();
+        var validator = validatorFactory.getValidator();
+        var validationResult = validator.validate(userDto, UpdateCheck.class);
+        if (!validationResult.isEmpty()) {
+            throw new ConstraintViolationException(validationResult);
+        }
+
         var userEntity = userCreateMapper.mapFrom(userDto);
         return userRepository.save(userEntity).getId();
     }
