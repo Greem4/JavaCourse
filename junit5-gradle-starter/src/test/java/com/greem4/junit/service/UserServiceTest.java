@@ -1,7 +1,9 @@
 package com.greem4.junit.service;
 
+import com.greem4.junit.TestBase;
 import com.greem4.junit.dto.User;
 import com.greem4.junit.extension.GlobalExtension;
+import com.greem4.junit.extension.PostProcessingExtension;
 import com.greem4.junit.extension.UserServiceParamResolver;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,9 +27,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ExtendWith({
         UserServiceParamResolver.class,
-        GlobalExtension.class
+        PostProcessingExtension.class
+//        GlobalExtension.class
 })
-public class UserServiceTest {
+public class UserServiceTest extends TestBase {
 
     private static final User IVAN = User.of(1, "Ivan", "123");
     private static final User PETR = User.of(2, "Petr", "111");
