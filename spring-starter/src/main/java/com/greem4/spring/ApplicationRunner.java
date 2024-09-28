@@ -11,6 +11,7 @@ public class ApplicationRunner {
     public static void main(String[] args) {
         var container = new Container();
 
+
 //        var connectionPool = new ConnectionPool();
 //        var userRepository = new UserRepository(connectionPool);
 //        var companyRepository = new CompanyRepository(connectionPool);
