@@ -1,10 +1,10 @@
 package com.greem4.spring;
 
+import com.greem4.spring.config.ApplicationConfiguration;
 import com.greem4.spring.database.pool.ConnectionPool;
-import com.greem4.spring.database.repository.CompanyRepository;
 import com.greem4.spring.database.repository.CrudRepository;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.Serializable;
 
@@ -16,7 +16,7 @@ public class ApplicationRunner {
         System.out.println(BeanFactoryPostProcessor.class.isAssignableFrom(value.getClass()));
         System.out.println(Serializable.class.isAssignableFrom(value.getClass()));
 
-        try (var context = new ClassPathXmlApplicationContext("application.xml")) {
+        try (var context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class)) {
             var connectionPool = context.getBean("pool1", ConnectionPool.class);
             System.out.println(connectionPool);
 
