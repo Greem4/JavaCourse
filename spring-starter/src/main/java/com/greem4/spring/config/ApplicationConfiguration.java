@@ -1,14 +1,13 @@
 package com.greem4.spring.config;
 
 import com.greem4.spring.database.repository.CrudRepository;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
-import org.springframework.context.annotation.PropertySource;
+import com.greem4.web.config.WebConfiguration;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 
 import static org.springframework.context.annotation.ComponentScan.*;
 
+@Import(WebConfiguration.class)
 @Configuration
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "com.greem4.spring",
