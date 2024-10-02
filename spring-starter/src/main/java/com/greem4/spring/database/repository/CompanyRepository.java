@@ -1,16 +1,10 @@
 package com.greem4.spring.database.repository;
 
+import com.greem4.spring.bpp.InjectBean;
 import com.greem4.spring.database.pool.ConnectionPool;
 
 public class CompanyRepository {
 
-    private final ConnectionPool connectionPool;
-
-    public CompanyRepository(ConnectionPool connectionPool) {
-        this.connectionPool = connectionPool;
-    }
-
-    public static CompanyRepository of(ConnectionPool connectionPool) {
-        return new CompanyRepository(connectionPool);
-    }
+    @InjectBean
+    private ConnectionPool connectionPool;
 }
