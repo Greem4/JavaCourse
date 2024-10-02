@@ -2,6 +2,7 @@ package com.greem4.spring;
 
 import com.greem4.spring.database.pool.ConnectionPool;
 import com.greem4.spring.database.repository.CompanyRepository;
+import com.greem4.spring.database.repository.CrudRepository;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,8 +20,8 @@ public class ApplicationRunner {
             var connectionPool = context.getBean("p1", ConnectionPool.class);
             System.out.println(connectionPool);
 
-            var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-            System.out.println(companyRepository);
+            var companyRepository = context.getBean("companyRepository", CrudRepository.class);
+            System.out.println(companyRepository.findById(1));
         }
     }
 }
