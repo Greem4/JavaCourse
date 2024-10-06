@@ -28,5 +28,4 @@ public class CompanyServiceIT {
         var expectedResult = new CompanyReadDto(COMPANY_ID);
         actualResult.ifPresent(actual -> assertEquals(expectedResult, actual));
     }
-
 }

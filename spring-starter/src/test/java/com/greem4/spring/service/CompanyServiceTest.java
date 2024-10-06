@@ -43,7 +43,6 @@ class CompanyServiceTest {
         actualResult.ifPresent(actual -> assertEquals(expectedResult, actual));
 
         verify(eventPublisher).publishEvent(any(EntityEvent.class));
-
         verifyNoMoreInteractions(eventPublisher, userService);
     }
 }
