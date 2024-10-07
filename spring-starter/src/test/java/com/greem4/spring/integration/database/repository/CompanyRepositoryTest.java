@@ -3,10 +3,8 @@ package com.greem4.spring.integration.database.repository;
 import com.greem4.spring.database.entity.Company;
 import com.greem4.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.Commit;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.persistence.EntityManager;
 
@@ -17,17 +15,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @IT
 @RequiredArgsConstructor
-@Transactional
-@Commit
+//@Commit
 class CompanyRepositoryTest {
 
     private final EntityManager entityManager;
+    private final TransactionTemplate transactionTemplate;
 
     @Test
     void findById() {
-        var company = entityManager.find(Company.class, 1);
-        assertNotNull(company);
-        assertThat(company.getLocales()).hasSize(2);
+        transactionTemplate.executeWithoutResult(tx -> {
+                var company = entityManager.find(Company.class, 1);
+                assertNotNull(company);
+                assertThat(company.getLocales()).hasSize(2);
+        });
     }
 
     @Test
