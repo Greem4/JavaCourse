@@ -1,15 +1,11 @@
 package com.greem4.spring.config;
 
 import com.greem4.spring.database.pool.ConnectionPool;
-import com.greem4.spring.database.repository.CrudRepository;
 import com.greem4.spring.database.repository.UserRepository;
 import com.greem4.web.config.WebConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.*;
-import org.springframework.stereotype.Component;
-
-import static org.springframework.context.annotation.ComponentScan.*;
 
 @Import(WebConfiguration.class)
 @Configuration
