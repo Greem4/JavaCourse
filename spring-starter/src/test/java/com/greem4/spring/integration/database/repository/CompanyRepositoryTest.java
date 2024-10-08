@@ -5,7 +5,6 @@ import com.greem4.spring.database.repository.CompanyRepository;
 import com.greem4.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.persistence.EntityManager;
@@ -17,13 +16,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @IT
 @RequiredArgsConstructor
-//@Commit
 class CompanyRepositoryTest {
 
     private static final Integer APPLE_ID = 4;
     private final EntityManager entityManager;
     private final TransactionTemplate transactionTemplate;
     private final CompanyRepository companyRepository;
+
+    @Test
+    void checkFindByQueries() {
+        companyRepository.findByName("Google");
+        companyRepository.findAllByNameContainingIgnoreCase("a");
+    }
 
     @Test
     void delete() {
