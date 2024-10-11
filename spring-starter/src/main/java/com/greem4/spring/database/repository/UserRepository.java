@@ -2,6 +2,7 @@ package com.greem4.spring.database.repository;
 
 import com.greem4.spring.database.entity.Role;
 import com.greem4.spring.database.entity.User;
+import com.greem4.spring.dto.PersonalInfo2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -23,7 +24,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "SELECT u.* FROM users u WHERE u.username = :username", nativeQuery = true)
     List<User> findAllByUsername(String username);
 
-
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("update User u " + "set u.role = :role " + "where u.id in (:ids)")
     int updateRole(Role role, Long... ids);
@@ -41,4 +41,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select u from User u ",
             countQuery = "select count(distinct u.firstname) from User u")
     Page<User> findAllBy(Pageable pageable);
+
+//    List<PersonalInfo> findAllByCompanyId(Integer CompanyId);
+
+    @Query(value = "SELECT firstname, " +
+                   "lastname, " +
+                   "birth_date birthDate " +
+                   "FROM users " +
+                   "WHERE company_id = :companyId",
+            nativeQuery = true)
+    List<PersonalInfo2> findAllByCompanyId(Integer companyId);
+
 }
