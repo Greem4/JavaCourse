@@ -2,6 +2,7 @@ package com.greem4.spring.integration.database.repository;
 
 import com.greem4.spring.database.entity.Role;
 import com.greem4.spring.database.entity.User;
+import com.greem4.spring.dto.UserFilter;
 import com.greem4.spring.database.repository.UserRepository;
 import com.greem4.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort;
 
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +22,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserRepositoryTest {
 
     private final UserRepository userRepository;
+
+    @Test
+    void checkCustomImplementation() {
+        UserFilter filter = new UserFilter(
+                null, "%ov%", LocalDate.now()
+        );
+        var users = userRepository.findAllByFilter(filter);
+        assertThat(users).hasSize(4);
+    }
 
     @Test
     void checkProjections() {
