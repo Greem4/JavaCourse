@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +23,13 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 class UserRepositoryTest {
 
     private final UserRepository userRepository;
+
+    @Test
+    void checkBatch() {
+        var users = userRepository.findAll();
+        userRepository.updateCompanyAndRole(users);
+        System.out.println();
+    }
 
     @Test
     void checkJdbcTemplate() {
