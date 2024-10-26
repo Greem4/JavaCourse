@@ -2,7 +2,6 @@ package com.greem4.spring.integration.service;
 
 import com.greem4.spring.config.DatabaseProperties;
 import com.greem4.spring.dto.CompanyReadDto;
-import com.greem4.spring.integration.annotation.IT;
 import com.greem4.spring.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -10,9 +9,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@IT
 @RequiredArgsConstructor
-public class CompanyServiceIT {
+public class CompanyServiceIT extends IntegrationTestBase {
 
     private static final Integer COMPANY_ID = 1;
 

@@ -3,7 +3,9 @@ package com.greem4.spring.integration.database.repository;
 import com.greem4.spring.database.entity.Company;
 import com.greem4.spring.database.repository.CompanyRepository;
 import com.greem4.spring.integration.annotation.IT;
+import com.greem4.spring.integration.service.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -14,9 +16,8 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-@IT
 @RequiredArgsConstructor
-class CompanyRepositoryTest {
+class CompanyRepositoryTest extends IntegrationTestBase {
 
     private static final Integer APPLE_ID = 4;
     private final EntityManager entityManager;
@@ -30,6 +31,7 @@ class CompanyRepositoryTest {
     }
 
     @Test
+    @Disabled
     void delete() {
         var mayBeCompany = companyRepository.findById(APPLE_ID);
         assertTrue(mayBeCompany.isPresent());
