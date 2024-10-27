@@ -1,0 +1,5 @@
+<root>
+    <item name='java.awt.EventDispatchThread doDispatch'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
