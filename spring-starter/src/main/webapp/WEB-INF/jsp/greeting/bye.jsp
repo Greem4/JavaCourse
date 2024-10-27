@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Bay</title>
+    <title>Bye</title>
 </head>
 <body>
-    Bye World!
+     Bye World!
 </body>
 </html>
