@@ -8,9 +8,9 @@ import java.time.LocalDate;
 @Value
 public class UserCreateEditDto {
     String username;
-    LocalDate birthday;
-    String firstName;
-    String lastName;
+    LocalDate birthDate;
+    String firstname;
+    String lastname;
     Role role;
     Integer companyId;
 }
