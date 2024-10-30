@@ -23,16 +23,20 @@ public class GreetingController {
     }
 
     @GetMapping("/hello")
-    public String hello(Model modelAndView,
+    public String hello(Model model,
                         HttpServletRequest request,
                         @ModelAttribute("userReadDto") UserReadDto userReadDto) {
-        modelAndView.addAttribute("user", userReadDto);
+//        request.getSession().setAttribute(); sessionScope
+//        request.setAttribute(); requestScope
+//        request.getSession().getAttribute("user")
+        model.addAttribute("user", userReadDto);
 
         return "greeting/hello";
     }
 
     @GetMapping("/bye")
     public String bye(@SessionAttribute("user") UserReadDto user, Model model) {
+//        request.getSession().getAttribute("user")
         return "greeting/bye";
     }
 
@@ -41,7 +45,7 @@ public class GreetingController {
                                @RequestParam Integer age,
                                @RequestHeader String accept,
                                @CookieValue("JSESSIONID") String JSESSIONID,
-                               @PathVariable Integer id) {
+                               @PathVariable("id") Integer id) {
         String ageParamValue = request.getParameter("age");
         String acceptHeader = request.getHeader("accept");
         Cookie[] cookies = request.getCookies();
