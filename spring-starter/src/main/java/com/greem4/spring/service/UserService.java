@@ -2,6 +2,7 @@ package com.greem4.spring.service;
 
 import com.greem4.spring.database.repository.UserRepository;
 import com.greem4.spring.dto.UserCreateEditDto;
+import com.greem4.spring.dto.UserFilter;
 import com.greem4.spring.dto.UserReadDto;
 import com.greem4.spring.mapper.UserCreateEditMapper;
 import com.greem4.spring.mapper.UserReadMapper;
@@ -20,6 +21,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserReadMapper userReadMapper;
     private final UserCreateEditMapper userCreateEditMapper;
+
+    public List<UserReadDto> findAll(UserFilter filter) {
+        return userRepository.findAllByFilter(filter).stream()
+                .map(userReadMapper::map)
+                .toList();
+    }
 
     public List<UserReadDto> findAll() {
         return userRepository.findAll().stream()
