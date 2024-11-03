@@ -1,6 +1,5 @@
 package com.greem4.spring.validation.impl;
 
-import com.greem4.spring.database.repository.CompanyRepository;
 import com.greem4.spring.dto.UserCreateEditDto;
 import com.greem4.spring.validation.UserInfo;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +13,6 @@ import static org.springframework.util.StringUtils.*;
 @Component
 @RequiredArgsConstructor
 public class UserInfoValidator implements ConstraintValidator<UserInfo, UserCreateEditDto> {
-
-    private final CompanyRepository companyRepository;
 
     @Override
     public boolean isValid(UserCreateEditDto value, ConstraintValidatorContext context) {

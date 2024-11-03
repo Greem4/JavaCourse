@@ -2,7 +2,6 @@ package com.greem4.spring.dto;
 
 import com.greem4.spring.database.entity.Role;
 import com.greem4.spring.validation.UserInfo;
-import com.greem4.spring.validation.group.CreateAction;
 import com.greem4.spring.validation.group.UpdateAction;
 import lombok.Value;
 import lombok.experimental.FieldNameConstants;
