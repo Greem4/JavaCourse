@@ -5,7 +5,9 @@ import com.greem4.spring.database.entity.User;
 import com.greem4.spring.database.repository.CompanyRepository;
 import com.greem4.spring.dto.UserCreateEditDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
@@ -14,13 +16,14 @@ import static java.util.function.Predicate.*;
 
 @Controller
 @RequiredArgsConstructor
-public class UserCreateEditMapper implements Mapper<UserCreateEditDto, User>  {
+public class UserCreateEditMapper implements Mapper<UserCreateEditDto, User> {
 
     private final CompanyRepository companyRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User map(UserCreateEditDto fromObject, User toObject) {
-        copy(fromObject,toObject);
+        copy(fromObject, toObject);
         return toObject;
     }
 
@@ -39,6 +42,11 @@ public class UserCreateEditMapper implements Mapper<UserCreateEditDto, User>  {
         user.setBirthDate(object.getBirthDate());
         user.setRole(object.getRole());
         user.setCompany(getCompany(object.getCompanyId()));
+
+        Optional.ofNullable(object.getRawPassword())
+                .filter(StringUtils::hasText)
+                .map(passwordEncoder::encode)
+                .ifPresent(user::setPassword);
 
         Optional.ofNullable(object.getImage())
                 .filter(not(MultipartFile::isEmpty))
