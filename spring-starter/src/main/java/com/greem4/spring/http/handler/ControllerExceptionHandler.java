@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice(basePackages = "com.greem4.spring.http.controller")
 public class ControllerExceptionHandler /*extends ResponseEntityExceptionHandler*/ {
 
-    @ExceptionHandler(Exception.class)
-    public String handlerException(Exception exception) {
-        log.error("Failed to return response", exception);
-        return "error/error500";
-    }
+//    @ExceptionHandler(Exception.class)
+//    public String handlerException(Exception exception) {
+//        log.error("Failed to return response", exception);
+//        return "error/error500";
+//    }
 }
