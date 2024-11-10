@@ -12,12 +12,12 @@ db:
     size: 12
     timeout: 10
   pools:
-   - size: 1
-     timeout: 1
-   - size: 2
-     timeout: 2
-   - size: 3
-     timeout: 3
+    - size: 1
+      timeout: 1
+    - size: 2
+      timeout: 2
+    - size: 3
+      timeout: 3
 
 spring.profiles.active: qa
 
@@ -49,3 +49,20 @@ spring:
       format_sql: true
       hbm2ddl.auto: validate
     open-in-view: false
+  security:
+    oauth2:
+      client:
+        registration:
+          yandex:
+            client-id: 75b78df4cd814813ad38b9fd359cf446
+            client-secret: 0007e8251d0f42e6aa83d1c78a2b53ff
+            redirect-uri: http://localhost:8080/login/oauth2/code/yandex
+            authorization-grant-type: authorization_code
+            client-name: Yandex
+            provider: yandex
+        provider:
+          yandex:
+            authorization-uri: https://oauth.yandex.ru/authorize
+            token-uri: https://oauth.yandex.ru/token
+            user-info-uri: https://login.yandex.ru/info
+            user-name-attribute: id
