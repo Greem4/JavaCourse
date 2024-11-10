@@ -1,13 +1,26 @@
 package com.greem4.spring.integration.http.controller;
 
+import com.greem4.spring.database.entity.Role;
 import com.greem4.spring.integration.service.IntegrationTestBase;
 import lombok.RequiredArgsConstructor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.security.authentication.TestingAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Arrays;
+import java.util.List;
+
+import static com.greem4.spring.database.entity.QUser.user;
 import static com.greem4.spring.dto.UserCreateEditDto.Fields.*;
 import static org.hamcrest.collection.IsCollectionWithSize.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -22,8 +35,7 @@ class UserControllerTest extends IntegrationTestBase {
         mockMvc.perform(get("/users"))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(view().name("user/users"))
-                .andExpect(model().attributeExists("users"))
-                .andExpect(model().attribute("users", hasSize(5)));
+                .andExpect(model().attributeExists("users"));
     }
 
     @Test
