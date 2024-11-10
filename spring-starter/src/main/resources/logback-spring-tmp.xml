@@ -20,7 +20,7 @@
             <!-- Шаблон именования архивных файлов с датой и индексом -->
             <fileNamePattern>logs/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- Максимальное количество архивов, которые сохранятся -->
-            <maxHistory>0</maxHistory>
+            <maxHistory>1</maxHistory>
         </rollingPolicy>
 
         <encoder>
