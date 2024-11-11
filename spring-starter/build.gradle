@@ -34,6 +34,7 @@ dependencies {
     implementation 'org.springframework.data:spring-data-envers'
     implementation 'com.querydsl:querydsl-jpa'
     implementation 'org.liquibase:liquibase-core'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     annotationProcessor 'com.querydsl:querydsl-apt'
 
