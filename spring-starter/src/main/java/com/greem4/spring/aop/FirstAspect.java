@@ -1,9 +1,12 @@
 package com.greem4.spring.aop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Aspect
 @Component
 public class FirstAspect {
@@ -70,6 +73,12 @@ public class FirstAspect {
     /*
         execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)) throws
      */
-    @Pointcut("execution(public * com.greem4.spring.service.*Service.finById(*))")
+    @Pointcut("execution(public * com.greem4.spring.service.*Service.findById(*))")
     public void anyFindByIdServiceMethod() {}
+
+    @Before("anyFindByIdServiceMethod()")
+    public void addLogging() {
+        log.info("invoked findById method");
+    }
+
 }
