@@ -1,10 +1,13 @@
 package com.greem4.spring.aop;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Slf4j
 @Aspect
@@ -62,23 +65,36 @@ public class FirstAspect {
         .. - 0+ any params type
      */
     @Pointcut("@args(com.greem4.spring.validation.UserInfo)")
-    public void hasUserInfoParamAnnotation() {}
+    public void hasUserInfoParamAnnotation() {
+    }
 
     /*
         bean - check bean name
      */
     @Pointcut("bean(*Service)")
-    public void isServiceLayerBean() {}
+    public void isServiceLayerBean() {
+    }
 
     /*
         execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)) throws
      */
     @Pointcut("execution(public * com.greem4.spring.service.*Service.findById(*))")
-    public void anyFindByIdServiceMethod() {}
+    public void anyFindByIdServiceMethod() {
+    }
 
-    @Before("anyFindByIdServiceMethod()")
-    public void addLogging() {
-        log.info("invoked findById method");
+    @Before(value = "anyFindByIdServiceMethod() " +
+            "&& args(id) " +
+            "&& target(service) " +
+            "&& this(serviceProxy) " +
+            "&& @within(transactional) ",
+            argNames = "joinPoint,id,service,serviceProxy,transactional")
+    public void addLogging(JoinPoint joinPoint,
+                           Object id,
+                           Object service,
+                           Object serviceProxy,
+                           Transactional transactional) {
+        log.info("invoked findById method in class {}, with id {}", service, id);
+
     }
 
 }
