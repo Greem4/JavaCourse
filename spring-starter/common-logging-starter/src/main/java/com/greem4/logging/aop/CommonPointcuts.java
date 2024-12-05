@@ -1,11 +1,9 @@
-package com.greem4.spring.aop;
+package com.greem4.logging.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
 public class CommonPointcuts {
 
     /*
@@ -20,7 +18,7 @@ public class CommonPointcuts {
         within - check class type name
                  проверить имя типа класса
      */
-    @Pointcut("within(com.greem4.spring.service.*Service)")
+    @Pointcut("within(com.greem4.*.service.*Service)")
     public void isServiceLayers() {
     }
 }

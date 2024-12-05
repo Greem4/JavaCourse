@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.greem4.logging.config.LoggingAutoConfiguration
